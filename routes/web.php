@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LeafletController;
+use App\Http\Controllers\Admin\SatkerController;
+use App\Http\Controllers\Admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +21,8 @@ Route::get('/', [LeafletController::class, 'index']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
+Route::resource('satkers', SatkerController::class);
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Auth::routes();
 
 
