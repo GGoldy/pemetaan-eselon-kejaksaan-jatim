@@ -21,8 +21,10 @@ Route::get('/', [LeafletController::class, 'index']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('satkers', SatkerController::class);
+
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/peta', [DashboardController::class, 'leaflet'])->name('leaflet');
+Route::resource('/satkers', SatkerController::class);
 Auth::routes();
 
 

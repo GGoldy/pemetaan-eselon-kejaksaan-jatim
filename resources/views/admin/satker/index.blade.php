@@ -15,28 +15,34 @@
         <table class="table table-bordered table-hover table-striped mb-0 bg-white">
             <thead>
                 <tr>
+                    <th>No</th>
                     <th>Nama</th>
                     <th>Koordinat</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($satkers as $satker)
+                @foreach ($satkers as $index => $satker)
                     <tr>
+                        <td>{{ $index + 1 }}</td>
                         <td>{{ $satker->nama }}</td>
                         <td>{{ $satker->longalt }}</td>
                         <td>
-                            <div class="d-flex">
+                            <div class="d-flex justify-content-center">
+                                <div>
+                                    <button type="submit" class="btn btn-outline-dark btn-sm me-2"><i
+                                            class="bi bi-pencil-square"></i></button>
+                                </div>
                                 <div>
                                     <form action="{{ route('satkers.destroy', ['satker' => $satker->id]) }}" method="POST">
                                         @csrf
                                         @method('delete')
-                                        <button type="submit"
-                                            class="btn btn-outline-dark btn-sm
-                                me-2"><i
-                                                class="bi-trash"></i></button>
+                                        <button type="submit" class="btn btn-outline-dark btn-sm ">
+                                            <i class="bi-trash"></i>
+                                        </button>
                                     </form>
                                 </div>
+
                             </div>
                         </td>
                     </tr>

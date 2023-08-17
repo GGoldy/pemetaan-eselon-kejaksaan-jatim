@@ -11,7 +11,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Dashboard - SB Admin</title>
+    <title>{{ $pageTitle }}</title>
+    @yield('css')
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     {{-- <link href="{{ mix('css/app.css') }}" rel="stylesheet" /> --}}
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -31,7 +32,7 @@
 
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand -->
-        <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
+        <b><a class="navbar-brand px-3" href="{{ route('dashboard') }}">Satuan Kerja Kejati Jatim</a></b>
         <!-- Sidebar Toggle -->
         <!-- Navbar Toggle -->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle"><i
@@ -63,23 +64,19 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <div class="sb-sidenav-menu-heading">Dashboard</div>
                         <a class="nav-link" href="{{ route('dashboard') }}">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
+                            <div class="sb-nav-link-icon"><i class="bi bi-info-circle-fill"></i></div>
+                            Pengenalan Aplikasi
                         </a>
-                        <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="charts.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Charts
-                        </a>
-                        <a class="nav-link" href="tables.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
+                        <div class="sb-sidenav-menu-heading">Alat</div>
+                        <a class="nav-link" href="{{ route('leaflet') }}">
+                            <div class="sb-nav-link-icon"><i class="bi bi-geo-alt"></i></div>
+                            Peta
                         </a>
                         <a class="nav-link" href="{{ route('satkers.index') }}">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Satker
+                            <div class="sb-nav-link-icon"><i class="fa fa-table"></i></div>
+                            Admin Satker KEJATI JATIM
                         </a>
                     </div>
                 </div>
@@ -97,12 +94,8 @@
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
+                        <div class="text-muted">Copyright &copy; Kejaksaan Tinggi Jawa Timur 2023</div>
+
                     </div>
                 </div>
             </footer>

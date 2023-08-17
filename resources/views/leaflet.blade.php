@@ -9,12 +9,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 70vh;
         }
 
         #map {
             width: 90vw;
-            height: 90vh;
+            height: 70vh;
         }
     </style>
 </head>
@@ -52,10 +52,10 @@
             var longitude = Number(parts[0]);
             var altitude = Number(parts[1]);
 
-            L.marker([longitude , altitude])
-            .addTo(map)
-            .bindPopup(satker.nama )
-            .openPopup();
+            L.marker([longitude, altitude])
+                .addTo(map)
+                .bindPopup(satker.nama)
+                .openPopup();
         });
     </script>
 </body>

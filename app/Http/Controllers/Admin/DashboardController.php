@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Satker;
 
 class DashboardController extends Controller
 {
@@ -11,10 +12,18 @@ class DashboardController extends Controller
     {
         $this->middleware('auth');
     }
+
     public function index()
     {
-        $pageTitle = 'Pemetaan Something';
+        $pageTitle = 'Welcome to admin satker KEJATI JATIM!';
 
         return view('admin.dashboard', ['pageTitle' => $pageTitle]);
+    }
+
+    public function leaflet()
+    {
+        $pageTitle = 'Pemetaan Satuan Kerja KEJATI JATIM';
+        $satkers = Satker::all();
+        return view('admin.leaflet', ['pageTitle' => $pageTitle], ['satkers' => $satkers]);
     }
 }
