@@ -1,7 +1,6 @@
-<html>
+@extends('layouts.app')
 
-<head>
-    <title>A Leaflet map!</title>
+@section('css')
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <style>
@@ -9,17 +8,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 70vh;
+            height: 80vh;
         }
 
         #map {
             width: 90vw;
-            height: 70vh;
+            height: 80vh;
         }
     </style>
-</head>
-
-<body>
+@endsection
+@section('content')
     <div class="map-wrapper">
         <div id="map"></div>
     </div>
@@ -58,6 +56,4 @@
                 .openPopup();
         });
     </script>
-</body>
-
-</html>
+@endsection

@@ -21,10 +21,10 @@ Route::get('/', [LeafletController::class, 'index']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::get('/peta', [DashboardController::class, 'leaflet'])->name('leaflet');
-Route::resource('/satkers', SatkerController::class);
+Route::get('/admin', [DashboardController::class, 'index'])->name('admin');
+Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/admin/peta', [DashboardController::class, 'leaflet'])->name('leaflet');
+Route::resource('/admin/tabel', SatkerController::class, ['names' => 'satkers']);
 Auth::routes();
 
 

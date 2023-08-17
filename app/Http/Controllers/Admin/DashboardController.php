@@ -15,7 +15,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $pageTitle = 'Welcome to admin satker KEJATI JATIM!';
+        $pageTitle = 'Selamat Datang di Pengenalan Pemetaan SATKER KEJATI JATIM!';
 
         return view('admin.dashboard', ['pageTitle' => $pageTitle]);
     }

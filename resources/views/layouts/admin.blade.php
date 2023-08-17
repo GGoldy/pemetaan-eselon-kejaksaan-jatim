@@ -31,12 +31,13 @@
 <body class="sb-nav-fixed">
 
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <!-- Navbar Brand -->
-        <b><a class="navbar-brand px-3" href="{{ route('dashboard') }}">Satuan Kerja Kejati Jatim</a></b>
+
         <!-- Sidebar Toggle -->
         <!-- Navbar Toggle -->
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle"><i
+        <button class="btn btn-link btn-sm order-1 order-lg-0 mx-1 px-4 me-lg-0" id="sidebarToggle"><i
                 class="fas fa-bars"></i></button>
+        <!-- Navbar Brand -->
+        <b><a class="navbar-brand px-3" href="{{ route('admin') }}">Satuan Kerja Kejati Jatim</a></b>
 
         <!-- ... your navigation menu ... -->
 
@@ -44,7 +45,6 @@
 
         <!-- Navbar Dropdown -->
         <div class="dropdown ms-auto me-3 me-lg-4">
-
             <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">

@@ -17,7 +17,7 @@ class SatkerController extends Controller
      */
     public function index()
     {
-        $pageTitle = 'Pemetaan Something';
+        $pageTitle = 'Tabel Pemetaan SATKER KEJATI JATIM';
 
         $satkers = Satker::all();
 

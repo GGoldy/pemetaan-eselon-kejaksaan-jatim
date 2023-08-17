@@ -34,7 +34,7 @@
                                             class="bi bi-pencil-square"></i></button>
                                 </div>
                                 <div>
-                                    <form action="{{ route('satkers.destroy', ['satker' => $satker->id]) }}" method="POST">
+                                    <form action="{{ route('satkers.destroy', $satker->id) }}" method="POST">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-outline-dark btn-sm ">
