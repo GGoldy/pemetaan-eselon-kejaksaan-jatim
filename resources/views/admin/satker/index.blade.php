@@ -18,7 +18,7 @@
                     <th>No</th>
                     <th>Nama</th>
                     <th>Koordinat</th>
-                    <th></th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
