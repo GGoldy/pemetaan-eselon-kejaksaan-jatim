@@ -34,7 +34,7 @@
 
         <!-- Sidebar Toggle -->
         <!-- Navbar Toggle -->
-        <button class="btn btn-link btn-sm order-1 order-lg-0 mx-1 px-4 me-lg-0" id="sidebarToggle"><i
+        <button class="btn btn-link btn-sm order-0 order-lg-0 mx-1 px-4 me-lg-0" id="sidebarToggle"><i
                 class="fas fa-bars"></i></button>
         <!-- Navbar Brand -->
         <b><a class="navbar-brand px-3" href="{{ route('admin') }}">Satuan Kerja Kejati Jatim</a></b>

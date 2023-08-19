@@ -30,8 +30,8 @@
                         <td>
                             <div class="d-flex justify-content-center">
                                 <div>
-                                    <button type="submit" class="btn btn-outline-dark btn-sm me-2"><i
-                                            class="bi bi-pencil-square"></i></button>
+                                    <a type="submit" href="{{ route('satkers.edit', ['tabel' => $satker->id]) }}" class="btn btn-outline-dark btn-sm me-2"><i
+                                            class="bi bi-pencil-square"></i></a>
                                 </div>
                                 <div>
                                     <form action="{{ route('satkers.destroy', $satker->id) }}" method="POST">
