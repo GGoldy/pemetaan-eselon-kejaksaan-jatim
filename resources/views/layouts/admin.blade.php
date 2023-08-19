@@ -12,19 +12,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ $pageTitle }}</title>
-    @yield('css')
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-    {{-- <link href="{{ mix('css/app.css') }}" rel="stylesheet" /> --}}
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-
-
+    @yield('importsinhead')
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
+    @vite(['resources/sass/app.scss', 'resources/css/app.css'])
     @stack('style-alt')
 </head>
 
@@ -35,13 +30,11 @@
         <!-- Sidebar Toggle -->
         <!-- Navbar Toggle -->
         <button class="btn btn-link btn-sm order-0 order-lg-0 mx-1 px-4 me-lg-0" id="sidebarToggle"><i
-                class="fas fa-bars"></i></button>
+                class="bi bi-list fs-3"></i></button>
         <!-- Navbar Brand -->
         <b><a class="navbar-brand px-3" href="{{ route('admin') }}">Satuan Kerja Kejati Jatim</a></b>
 
-        <!-- ... your navigation menu ... -->
-
-        <!-- Navbar Search -->
+        <!-- ... navigation menu ... -->
 
         <!-- Navbar Dropdown -->
         <div class="dropdown ms-auto me-3 me-lg-4">
@@ -75,8 +68,16 @@
                             Peta
                         </a>
                         <a class="nav-link" href="{{ route('satkers.index') }}">
-                            <div class="sb-nav-link-icon"><i class="fa fa-table"></i></div>
-                            Admin Satker KEJATI JATIM
+                            <div class="sb-nav-link-icon"><i class="bi bi-table"></i></div>
+                            Tabel Satuan Kerja
+                        </a>
+                        <a class="nav-link" href="{{ route('jabatans.index') }}">
+                            <div class="sb-nav-link-icon"><i class="bi bi-table"></i></div>
+                            Tabel Jabatan
+                        </a>
+                        <a class="nav-link" href="{{ route('satkers.index') }}">
+                            <div class="sb-nav-link-icon"><i class="bi bi-table"></i></div>
+                            Tabel Jumlah Pegawai
                         </a>
                     </div>
                 </div>
@@ -101,18 +102,8 @@
             </footer>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-    </script>
-    <script src="js/scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="assets/demo/chart-area-demo.js"></script>
-    <script src="assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-        crossorigin="anonymous"></script>
-    <script src="js/datatables-simple-demo.js"></script>
 
-
-    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
+    @vite(['resources/js/app.js'])
 </body>
 
 </html>

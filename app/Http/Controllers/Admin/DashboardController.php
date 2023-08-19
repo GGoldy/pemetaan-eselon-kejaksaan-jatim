@@ -24,6 +24,6 @@ class DashboardController extends Controller
     {
         $pageTitle = 'Pemetaan Satuan Kerja KEJATI JATIM';
         $satkers = Satker::all();
-        return view('admin.leaflet', ['pageTitle' => $pageTitle], ['satkers' => $satkers]);
+        return view('admin.mapadmin', ['pageTitle' => $pageTitle], ['satkers' => $satkers]);
     }
 }

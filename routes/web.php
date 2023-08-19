@@ -1,9 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LeafletController;
-use App\Http\Controllers\Admin\SatkerController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\SatkerController;
+use App\Http\Controllers\Admin\JabatanController;
+use App\Http\Controllers\Admin\JumlahController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,15 +19,16 @@ use App\Http\Controllers\Admin\DashboardController;
 |
 */
 
-Route::get('/', [LeafletController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/admin', [DashboardController::class, 'index'])->name('admin');
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/admin/peta', [DashboardController::class, 'leaflet'])->name('leaflet');
-Route::resource('/admin/tabel', SatkerController::class, ['names' => 'satkers']);
+Route::resource('/admin/satker', SatkerController::class, ['names' => 'satkers']);
+Route::resource('/admin/jabatan', JabatanController::class, ['names' => 'jabatans']);
 Auth::routes();
 
 

@@ -30,7 +30,7 @@ class SatkerController extends Controller
      */
     public function create()
     {
-        $pageTitle = 'Create Satker';
+        $pageTitle = 'Buat Satker';
 
         return view('admin.satker.create', compact('pageTitle'));
     }
@@ -42,7 +42,6 @@ class SatkerController extends Controller
     {
         $messages = [
             'required' => ':Attribute harus diisi.',
-            'email' => 'Isi :attribute dengan format yang benar',
             'numeric' => 'Isi :attribute dengan angka'
         ];
         $validator = Validator::make($request->all(), [
@@ -79,9 +78,8 @@ class SatkerController extends Controller
      */
     public function edit(string $id)
     {
-        $pageTitle = 'Edit Satker';
+        $pageTitle = 'Sunting Satker';
         $satker = Satker::find($id);
-
 
         return view('admin.satker.edit', compact('pageTitle', 'satker'));
     }
