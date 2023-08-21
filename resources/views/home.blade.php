@@ -14,6 +14,10 @@
             width: 90vw;
             height: 80vh;
         }
+
+        #searchdiv input:focus {
+            outline: none;
+        }
     </style>
 @endsection
 @section('content')

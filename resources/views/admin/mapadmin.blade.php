@@ -7,12 +7,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 70vh;
+            height: 80vh;
         }
 
         #map {
             width: 90vw;
-            height: 70vh;
+            height: 80vh;
+        }
+
+        #searchdiv input:focus {
+            outline: none;
         }
     </style>
 @endsection

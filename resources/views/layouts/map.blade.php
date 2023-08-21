@@ -1,7 +1,15 @@
 <!-- Content Map -->
-<input oninput="filterSatker()" type="text" class="search" id="inputFilter" name="inputFilter">
+
 <div class="map-wrapper">
-    <div id="map"></div>
+    <div id="map" class="d-grid" style="z-index: 1">
+        <div id="searchdiv" class="d-flex align-items-center justify-content-center me-2 mt-2"
+            style="z-index: 2 ;position:absolute; align-self:flex-start; justify-self:flex-end; background-color:white; border:1px solid black;">
+            <i class="bi bi-search px-2" style="font-size: 2vw"></i>
+            <input oninput="filterSatker()" type="text" class="search" id="inputFilter" name="inputFilter"
+                style="border: none; font-size:2vw">
+        </div>
+    </div>
+
 </div>
 
 <script>
@@ -17,6 +25,7 @@
         maxZoom: 17,
         minZoom: 8,
     }).addTo(map);
+
 
     // add marker to some places in map and give details
 
@@ -35,6 +44,10 @@
 
         markers.push(marker)
     });
+
+
+
+
 
     function filterSatker() {
         const inputFilter = document.getElementById("inputFilter").value.toLowerCase();
@@ -66,6 +79,9 @@
 
             markers.push(marker)
         });
+
+        L.Control.geocoder().addTo(map);
+
         // You can now use the filteredSatkers array as needed, for example, to display on the map
         console.log(filteredSatkers);
     }
