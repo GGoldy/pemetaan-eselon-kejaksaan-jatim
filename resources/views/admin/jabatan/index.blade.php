@@ -8,7 +8,7 @@
                 <li class="breadcrumb-item active">Daftar Jabatan dari masing - masing satuan kerja yang berada pada wilayah
                     kerja Kejaksaan Tinggi Jawa Timur</li>
             </ol>
-            <a class="btn btn-dark" href="{{ route('jabatans.create') }}">Create jabatan</a>
+            <a class="btn btn-dark" href="{{ route('jabatans.create') }}">Buat jabatan</a>
         </div>
     </div>
     <hr>

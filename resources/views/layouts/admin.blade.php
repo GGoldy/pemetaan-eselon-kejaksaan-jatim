@@ -75,7 +75,7 @@
                             <div class="sb-nav-link-icon"><i class="bi bi-table"></i></div>
                             Tabel Jabatan
                         </a>
-                        <a class="nav-link" href="{{ route('satkers.index') }}">
+                        <a class="nav-link" href="{{ route('jumlahs.index') }}">
                             <div class="sb-nav-link-icon"><i class="bi bi-table"></i></div>
                             Tabel Jumlah Pegawai
                         </a>

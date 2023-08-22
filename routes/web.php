@@ -29,6 +29,7 @@ Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('das
 Route::get('/admin/peta', [DashboardController::class, 'leaflet'])->name('leaflet');
 Route::resource('/admin/satker', SatkerController::class, ['names' => 'satkers']);
 Route::resource('/admin/jabatan', JabatanController::class, ['names' => 'jabatans']);
+Route::resource('/admin/jumlahpegawai', JumlahController::class, ['names' => 'jumlahs']);
 Auth::routes();
 
 

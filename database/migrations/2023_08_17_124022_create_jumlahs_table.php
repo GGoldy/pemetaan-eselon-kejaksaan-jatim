@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('jumlahs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('satker_id')->constrained('satkers');
+            $table->foreignId('jabatan_id')->constrained('jabatans');
+            $table->integer('jumlah');
             $table->timestamps();
         });
     }

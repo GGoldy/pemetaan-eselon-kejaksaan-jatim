@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Satker;
+use App\Models\Jumlah;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\MySqlConnection;
 
 class SatkerController extends Controller
 {
