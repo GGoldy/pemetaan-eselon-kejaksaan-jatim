@@ -83,8 +83,3 @@
         </form>
     </div>
 @endsection
-{{-- @push('scripts')
-    <script type="module">
-
-    </script>
-@endpush --}}
