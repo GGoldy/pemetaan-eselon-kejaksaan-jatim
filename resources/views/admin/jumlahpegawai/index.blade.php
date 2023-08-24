@@ -25,37 +25,35 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- {{ $noloop = '' }} --}}
-                @foreach ($jumlahs as $index => $jumlah)
-                    <tr>
-                        <td>{{ $index + 1 }}</td>
-                        {{-- @if ($noloop == $jumlah->satker->nama)
-                            <td> </td>
-                        @elseif ($noloop != $jumlah->satker->nama)
-                            <td>{{ $jumlah->satker->nama }}</td>
-                        @endif --}}
-                        <td>{{ $jumlah->satker->nama }}</td>
-                        <td>{{ $jumlah->jabatan->nama_jabatan }}</td>
-                        <td>{{ $jumlah->jumlah }}</td>
-                        {{-- {{ $noloop = $jumlah->satker->nama }} --}}
-                        <td>
-                            <div class="d-flex justify-content-center">
-                                <div>
-                                    <a type="submit" href="{{ route('jumlahs.edit', $jumlah->id) }}"
-                                        class="btn btn-outline-dark btn-sm me-2"><i class="bi bi-pencil-square"></i></a>
-                                </div>
-                                <div>
-                                    <form action="{{ route('jumlahs.destroy', $jumlah->id) }}" method="POST">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-outline-dark btn-sm ">
-                                            <i class="bi-trash"></i>
-                                        </button>
-                                    </form>
-                                </div>
 
-                            </div>
-                        </td>
+                @foreach ($satkers as $index => $satker)
+                    @foreach ($satker->jabatans as $jabatan)
+                        <tr>
+                            <td>{{ $index + 1 }}</td>
+                            <td>{{ $satker->nama }}</td>
+                            <td>{{ $jabatan->nama_jabatan }}</td>
+                            <td>{{ $jabatan->pivot->jumlah }}</td>
+
+                            <td>
+                                <div class="d-flex justify-content-center">
+                                    <div>
+                                        <a type="submit" href="{{ route('jumlahs.edit', $jabatan->pivot->id) }}"
+                                            class="btn btn-outline-dark btn-sm me-2"><i class="bi bi-pencil-square"></i></a>
+                                    </div>
+                                    <div>
+                                        <form action="{{ route('jumlahs.destroy', $jabatan->pivot->id) }}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-outline-dark btn-sm ">
+                                                <i class="bi-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </td>
+                    @endforeach
+
                     </tr>
                 @endforeach
             </tbody>

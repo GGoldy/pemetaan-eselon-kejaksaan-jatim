@@ -8,8 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Satker extends Model
 {
     use HasFactory;
-    public function jumlah()
+    public function jabatans()
     {
-        return $this->hasMany(Jumlah::class);
+        return $this->belongsToMany(Jabatan::class,'jumlahs')->withPivot('id','jumlah');
+    }
+    public function permissions()
+    {
+        return $this->hasMany(Permission::class);
     }
 }

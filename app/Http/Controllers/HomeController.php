@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Satker;
+use App\Models\Jabatan;
 
 class HomeController extends Controller
 {
@@ -17,9 +18,9 @@ class HomeController extends Controller
     {
         $pageTitle = 'Pemetaan Satker';
 
-        $satkers = Satker::all();
+        $satkersWithJabatans = Satker::with('jabatans')->get();
 
-        return view('home', ['pageTitle' => $pageTitle], ['satkers' => $satkers]);
+        return view('home', ['pageTitle' => $pageTitle], ['satkers' => $satkersWithJabatans]);
     }
 
     public function howto()

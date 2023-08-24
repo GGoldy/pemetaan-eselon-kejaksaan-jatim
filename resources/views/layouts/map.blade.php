@@ -21,7 +21,7 @@
 
     // load a tile layer
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "Data Eselon Kejati Jawa Timur",
+        attribution: "Data Jumlah Pegawai dalam wilayah kerja Kejaksaan Tinggi Jawa Timur",
         maxZoom: 17,
         minZoom: 8,
     }).addTo(map);
@@ -30,6 +30,7 @@
     // add marker to some places in map and give details
 
     const satkers = @json($satkers);
+    console.log(satkers);
     var markers = [];
 
     satkers.forEach(function(satker) {
@@ -37,18 +38,32 @@
         var longitude = Number(parts[0]);
         var altitude = Number(parts[1]);
 
-        var marker = L.marker([longitude, altitude])
+        var marker = L.marker([longitude, altitude], {
+                title: (satker.nama),
+            })
             .addTo(map)
-            .bindPopup(satker.nama)
-            .openPopup();
+            .bindPopup(
+                ` <h5> ${satker.nama} </h5><br>
+                <h6>Daftar Pegawai : </h6>
+                <table class='table table-hover table-bordered'>
+                  <tr>
+                  <th>Jabatan</th>
+                  <th>Jumlah (Personil)</th>
+                    </tr>
+
+                  ${satker.jabatans.map(jabatan => `<tr><td>${jabatan.nama_jabatan}</td><td>${jabatan.pivot.jumlah}</td></tr>`).join('')}
+
+                    </table>`, {
+                    maxWidth: 500,
+                    maxHeight: 200
+                }
+            )
+
 
         markers.push(marker)
     });
 
-
-
-
-
+    // start filter function
     function filterSatker() {
         const inputFilter = document.getElementById("inputFilter").value.toLowerCase();
 
@@ -74,17 +89,35 @@
 
             var marker = L.marker([longitude, altitude])
                 .addTo(map)
-                .bindPopup(satker.nama)
-                .openPopup();
+                .bindPopup(
+                    ` <h5> ${satker.nama} </h5><br>
+                <h6>Daftar Pegawai : </h6>
+                <table class='table table-hover table-bordered'>
+                  <tr>
+                  <th>Jabatan</th>
+                  <th>Jumlah (Personil)</th>
+                    </tr>
 
-            markers.push(marker)
+                  ${satker.jabatans.map(jabatan => `<tr><td>${jabatan.nama_jabatan}</td><td>${jabatan.pivot.jumlah}</td></tr>`).join('')}
+
+                    </table>`, {
+                        maxWidth: 500,
+                        maxHeight: 200
+                    }
+                )
+            markers.push(marker);
+            console.log(markers.length);
+            if (markers.length <= 1) {
+                marker.openPopup();
+            }
         });
 
-        L.Control.geocoder().addTo(map);
+
 
         // You can now use the filteredSatkers array as needed, for example, to display on the map
         console.log(filteredSatkers);
     }
+    // end filter function
 </script>
 
 <!-- End of Content Map -->

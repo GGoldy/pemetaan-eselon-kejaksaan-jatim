@@ -23,7 +23,7 @@ class DashboardController extends Controller
     public function leaflet()
     {
         $pageTitle = 'Pemetaan Satuan Kerja KEJATI JATIM';
-        $satkers = Satker::all();
-        return view('admin.mapadmin', ['pageTitle' => $pageTitle], ['satkers' => $satkers]);
+        $satkersWithJabatans = Satker::with('jabatans')->get();
+        return view('admin.mapadmin', ['pageTitle' => $pageTitle], ['satkers' => $satkersWithJabatans]);
     }
 }

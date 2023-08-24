@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-fluid px-4 py-4">
-        <form action="{{ route('jumlahs.update', $jumlahtbl->id) }}" method="POST">
+        <form action="{{ route('jumlahs.update', $pivotData->id) }}" method="POST">
             @csrf
             @method('put')
             <div class="row justify-content-center">
@@ -21,7 +21,7 @@
                                     if ($errors->any()) {
                                         $selected = old('satker');
                                     } else {
-                                        $selected = $jumlahtbl->satker_id;
+                                        $selected = $satkerbyjumlah->id;
                                     }
                                 @endphp
                                 @foreach ($satkers as $satker)
@@ -42,7 +42,7 @@
                                     if ($errors->any()) {
                                         $selected = old('jabatan');
                                     } else {
-                                        $selected = $jumlahtbl->jabatan_id;
+                                        $selected = $jabatanbyjumlah->id;
                                     }
                                 @endphp
                                 @foreach ($jabatans as $jabatan)
@@ -58,7 +58,7 @@
                         <div class="col-md-12 mb-3">
                             <label for="jumlah" class="form-label">Jumlah Pegawai</label>
                             <input class="form-control @error('jumlah') is-invalid @enderror" type="number" name="jumlah"
-                                id="jumlah" value="{{ $errors->any() ? old('jumlah') : $jumlahtbl->jumlah }}"
+                                id="jumlah" value="{{ $errors->any() ? old('jumlah') : $pivotData->jumlah }}"
                                 placeholder="Masukkan Jumlah Pegawai">
                             @error('jumlah')
                                 <div class="text-danger"><small>{{ $message }}</small></div>
@@ -66,6 +66,8 @@
                         </div>
 
                     </div>
+
+
                     <hr>
                     <div class="row">
                         <div class="col-md-6 d-grid">

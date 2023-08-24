@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\MySqlConnection;
 use App\Models\Satker;
 use App\Models\Jabatan;
-use App\Models\Jumlah;
+
 
 class JumlahController extends Controller
 {
@@ -20,9 +20,9 @@ class JumlahController extends Controller
     {
         $pageTitle = 'Tabel Pemetaan Jumlah Pegawai SATKER KEJATI JATIM';
 
-        $jumlahs = Jumlah::all();
+        $satkers = Satker::with('jabatans')->get();
 
-        return view('admin.jumlahpegawai.index', ['pageTitle' => $pageTitle], ['jumlahs' => $jumlahs]);
+        return view('admin.jumlahpegawai.index', ['pageTitle' => $pageTitle], ['satkers' => $satkers]);
     }
 
     /**
@@ -41,6 +41,10 @@ class JumlahController extends Controller
      */
     public function store(Request $request)
     {
+        $satker = $request->satker;
+        $jabatan = $request->jabatan;
+        $jumlah = $request->jumlah;
+
         $messages = [
             'required' => ':Attribute harus diisi.',
             'numeric' => 'Isi :attribute dengan angka'
@@ -48,20 +52,14 @@ class JumlahController extends Controller
         $validator = Validator::make($request->all(), [
             'jumlah' => 'required|numeric'
         ], $messages);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+
+        $satkers = Satker::find($satker);
+
+        if ($validator->fails() or $satkers->jabatans->contains('id',$jabatan)) {
+            return redirect()->back()->withErrors('Terjadi Kesalahan!')->withInput();
         }
 
-        $satker = $request->satker;
-        $jabatan = $request->jabatan;
-        $jumlah_jumlah = $request->jumlah;
-
-
-        $jumlah = new Jumlah;
-        $jumlah->satker_id = $satker;
-        $jumlah->jabatan_id = $jabatan;
-        $jumlah->jumlah = $jumlah_jumlah;
-        $jumlah->save();
+        $satkers->jabatans()->sync([$jabatan => ['jumlah' => $jumlah, 'created_at' => now(), 'updated_at' => now()]], false);
 
         return redirect()->route('jumlahs.index');
     }
@@ -80,10 +78,17 @@ class JumlahController extends Controller
     public function edit(string $id)
     {
         $pageTitle = 'Buat Jumlah Pegawai';
-        $jumlahtbl = Jumlah::find($id);
         $satkers = Satker::all();
         $jabatans = Jabatan::all();
-        return view('admin.jumlahpegawai.edit', compact('pageTitle', 'jumlahtbl' ,'satkers','jabatans'));
+        // to get all jabatan related to one satker with id from jumlahs
+        // $satkerpivot = Satker::whereHas('jabatans', function($query)use($id){
+        //   $query->where('jumlahs.id',$id);
+        // })->get();
+        $pivotData = DB::table('jumlahs')->where('id', $id)->first();
+        $jabatanbyjumlah = Jabatan::find($pivotData->jabatan_id);
+        $satkerbyjumlah = Satker::find($pivotData->satker_id);
+
+        return view('admin.jumlahpegawai.edit', compact('pageTitle','satkers','jabatans','pivotData','jabatanbyjumlah', 'satkerbyjumlah'));
     }
 
     /**
@@ -104,14 +109,20 @@ class JumlahController extends Controller
 
         $satker = $request->satker;
         $jabatan = $request->jabatan;
-        $jumlah_jumlah = $request->jumlah;
+        $jumlah = $request->jumlah;
 
 
-        $jumlah = Jumlah::find($id);
-        $jumlah->satker_id = $satker;
-        $jumlah->jabatan_id = $jabatan;
-        $jumlah->jumlah = $jumlah_jumlah;
-        $jumlah->save();
+        $satkers = Satker::find($satker);
+        $jabatans = Jabatan::find($jabatan);
+
+        $newData = [
+            'created_at' => now(), // Update the created_at timestamp
+            'updated_at' => now(), // Update the created_at timestamp
+            'jumlah' => $jumlah, // Update a custom column in the pivot table
+        ];
+
+        $satkers->jabatans()->updateExistingPivot($jabatans->id, $newData);
+
 
         return redirect()->route('jumlahs.index');
     }
@@ -121,7 +132,7 @@ class JumlahController extends Controller
      */
     public function destroy(string $id)
     {
-        Jumlah::find($id)->delete();
+        DB::table('jumlahs')->where('id', $id)->delete();
         return redirect()->route('jumlahs.index');
     }
 }
