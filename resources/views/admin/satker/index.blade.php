@@ -12,7 +12,7 @@
     </div>
     <hr>
     <div class="table-responsive border p-3 rounded-3 m-4">
-        <table class="table table-bordered table-hover table-striped mb-0 bg-white">
+        <table class="table table-bordered table-hover table-striped mb-0 bg-white" id="satkerTable">
             <thead>
                 <tr>
                     <th>No</th>
@@ -51,3 +51,10 @@
         </table>
     </div>
 @endsection
+@push('scripts')
+    <script type="module">
+        $(document).ready(function() {
+            $('#satkerTable').DataTable();
+        });
+    </script>
+@endpush
