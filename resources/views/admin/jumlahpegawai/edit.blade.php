@@ -15,7 +15,9 @@
                     <div class="row text-center">
                         <div class="col-md-12 mb-3">
                             <label for="satker" class="form-label">Satuan Kerja</label>
-                            <select name="satker" id="satker" class="form-select">
+                            <input type="hidden" name="old_satker" id="old_satker" value="{{ $satkerbyjumlah->id }}">
+
+                            <select name="satker" id="satker" class="form-select" disabled>
                                 @php
                                     $selected = '';
                                     if ($errors->any()) {
@@ -36,7 +38,8 @@
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="jabatan" class="form-label">Jabatan</label>
-                            <select name="jabatan" id="jabatan" class="form-select">
+                            <input type="hidden" name="old_jabatan" id="old_jabatan" value="{{ $jabatanbyjumlah->id }}">
+                            <select name="jabatan" id="jabatan" class="form-select" disabled>
                                 @php
                                     $selected = '';
                                     if ($errors->any()) {

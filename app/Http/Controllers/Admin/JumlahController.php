@@ -107,8 +107,8 @@ class JumlahController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $satker = $request->satker;
-        $jabatan = $request->jabatan;
+        $satker = $request->old_satker;
+        $jabatan = $request->old_jabatan;
         $jumlah = $request->jumlah;
 
 
