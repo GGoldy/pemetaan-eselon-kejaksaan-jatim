@@ -90,7 +90,11 @@
 
             jabatanDropdown.empty();
             $.each(filteredJabatans, function(index, filteredJabatan) {
-                jabatanDropdown.append(new Option(`${filteredJabatan.id} - ${filteredJabatan.nama_jabatan}`));
+                var option = new Option(`${filteredJabatan.id} - ${filteredJabatan.nama_jabatan}`, filteredJabatan
+                    .id);
+
+                // Append the option to the select element with the id "your-select-id"
+                $('#jabatan').append(option);
             });
         }
         showRemainingJabatan();
