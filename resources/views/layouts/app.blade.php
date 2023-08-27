@@ -68,7 +68,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
+                                    <a class="dropdown-item" href="{{ route('admin') }}">{{ __('Dasbor') }}</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
@@ -88,9 +88,10 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="" style="height:80vh;">
             @yield('content')
         </main>
+        @include('layouts.footer')
     </div>
 </body>
 

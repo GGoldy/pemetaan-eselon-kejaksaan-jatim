@@ -7,7 +7,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 80vh;
+            height: 100%;
             position: relative;
             top: 0;
             left: 0;
@@ -18,7 +18,7 @@
 
         #map {
             width: 100%;
-            height: 80vh;
+            height: 100%;
         }
 
         #searchdiv input:focus {

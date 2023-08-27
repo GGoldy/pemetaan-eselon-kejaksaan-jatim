@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Jabatan;
-
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\MySqlConnection;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class JabatanController extends Controller
 {
@@ -21,7 +21,7 @@ class JabatanController extends Controller
 
     public function index()
     {
-        $pageTitle = 'Tabel Daftar Jabatan dalam wilayah kerja Kejaksaan Tinggi Jawa Timur';
+        $pageTitle = 'Tabel Daftar Jabatan dalam Wilayah Kerja KEJATI JATIM';
 
         $jabatans = Jabatan::all();
 
@@ -56,6 +56,8 @@ class JabatanController extends Controller
         $jabatan = new Jabatan;
         $jabatan->nama_jabatan = $request->nama_jabatan;
         $jabatan->save();
+
+        Alert::alert('Sukses!', 'Data Jabatan Berhasil Ditambahkan', 'success');
 
         return redirect()->route('jabatans.index');
     }
@@ -98,6 +100,8 @@ class JabatanController extends Controller
         $jabatan->nama_jabatan = $request->nama_jabatan;
         $jabatan->save();
 
+        Alert::alert('Sukses!', 'Data Jabatan Berhasil Diubah', 'success');
+
         return redirect()->route('jabatans.index');
     }
 
@@ -107,6 +111,7 @@ class JabatanController extends Controller
     public function destroy(string $id)
     {
         Jabatan::find($id)->delete();
+        Alert::alert('Sukses!', 'Data Jabatan Berhasil Dihapus', 'success');
         return redirect()->route('jabatans.index');
     }
 }

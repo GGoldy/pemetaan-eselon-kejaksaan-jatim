@@ -8,6 +8,8 @@ use App\Models\Satker;
 use App\Models\Jumlah;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\MySqlConnection;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class SatkerController extends Controller
 {
@@ -20,11 +22,12 @@ class SatkerController extends Controller
      */
     public function index()
     {
-        $pageTitle = 'Tabel Pemetaan SATKER KEJATI JATIM';
+        $alert = new Alert();
+        $pageTitle = 'Tabel Pemetaan Satuan Kerja KEJATI JATIM';
 
         $satkers = Satker::all();
 
-        return view('admin.satker.index', ['pageTitle' => $pageTitle], ['satkers' => $satkers]);
+        return view('admin.satker.index', compact('pageTitle', 'satkers','alert'));
     }
 
     /**
@@ -64,7 +67,10 @@ class SatkerController extends Controller
         $satker->longalt = $longalt;
         $satker->save();
 
+        Alert::alert('Sukses!', 'Data Satuan Kerja Berhasil Ditambahkan', 'success');
+
         return redirect()->route('satkers.index');
+
     }
 
     /**
@@ -114,6 +120,8 @@ class SatkerController extends Controller
         $satker->longalt = $longalt;
         $satker->save();
 
+        Alert::alert('Sukses!', 'Data Satuan Kerja Berhasil Diubah', 'success');
+
         return redirect()->route('satkers.index');
     }
 
@@ -123,6 +131,8 @@ class SatkerController extends Controller
     public function destroy(string $id)
     {
         Satker::find($id)->delete();
+        Alert::alert('Sukses!', 'Data Satuan Kerja Berhasil Dihapus', 'success');
         return redirect()->route('satkers.index');
+
     }
 }

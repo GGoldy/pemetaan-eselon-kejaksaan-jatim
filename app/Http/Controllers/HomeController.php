@@ -16,7 +16,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $pageTitle = 'Pemetaan Satker';
+        $pageTitle = 'Pemetaan Satuan Kerja Kejaksaan Tinggi Jawa Timur';
 
         $satkersWithJabatans = Satker::with('jabatans')->get();
 

@@ -15,14 +15,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $pageTitle = 'Selamat Datang di Pengenalan Pemetaan SATKER KEJATI JATIM!';
-
-        return view('admin.dashboard', ['pageTitle' => $pageTitle]);
-    }
-
-    public function leaflet()
-    {
-        $pageTitle = 'Pemetaan Satuan Kerja KEJATI JATIM';
+        $pageTitle = 'Pemetaan Satuan Kerja dengan Pegawai dalam Wilayah Kerja KEJATI JATIM';
         $satkersWithJabatans = Satker::with('jabatans')->get();
         return view('admin.mapadmin', ['pageTitle' => $pageTitle], ['satkers' => $satkersWithJabatans]);
     }

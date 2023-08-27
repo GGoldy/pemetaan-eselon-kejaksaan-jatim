@@ -1,3 +1,6 @@
+@php
+    $currentRouteName = Route::currentRouteName();
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,15 +21,23 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <!-- Scripts -->
+    <!-- Scripts Vite -->
     @vite(['resources/sass/app.scss', 'resources/css/app.css'])
+
+    <!-- for datatables ajax googleapis-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- sweet alert import for js functionality inside view -->
+    <script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
+
     @stack('style-alt')
 </head>
 
 <body class="sb-nav-fixed">
+    <!-- including sweet alert to use with facades in controller -->
+    @include('sweetalert::alert')
 
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-
         <!-- Sidebar Toggle -->
         <!-- Navbar Toggle -->
         <button class="btn btn-link btn-sm order-0 order-lg-0 mx-1 px-4 me-lg-0" id="sidebarToggle"><i
@@ -57,27 +68,33 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Dashboard</div>
-                        <a class="nav-link" href="{{ route('dashboard') }}">
-                            <div class="sb-nav-link-icon"><i class="bi bi-info-circle-fill"></i></div>
-                            Pengenalan Aplikasi
-                        </a>
-                        <div class="sb-sidenav-menu-heading">Alat</div>
-                        <a class="nav-link" href="{{ route('leaflet') }}">
-                            <div class="sb-nav-link-icon"><i class="bi bi-geo-alt"></i></div>
+                        <div class="sb-sidenav-menu-heading">Dasbor</div>
+
+                        <a class="nav-link @if ($currentRouteName == 'peta' or $currentRouteName == 'admin') active @endif" href="{{ route('peta') }}">
+                            <div class="sb-nav-link-icon"><i class="bi bi-geo-alt"></i></i></div>
                             Peta
                         </a>
-                        <a class="nav-link" href="{{ route('satkers.index') }}">
+                        <div class="sb-sidenav-menu-heading">Alat</div>
+
+                        <a class="nav-link @if ($currentRouteName == 'satkers.index') active @endif"
+                            href="{{ route('satkers.index') }}">
                             <div class="sb-nav-link-icon"><i class="bi bi-table"></i></div>
                             Tabel Satuan Kerja
                         </a>
-                        <a class="nav-link" href="{{ route('jabatans.index') }}">
+                        <a class="nav-link @if ($currentRouteName == 'jabatans.index') active @endif"
+                            href="{{ route('jabatans.index') }}">
                             <div class="sb-nav-link-icon"><i class="bi bi-table"></i></div>
                             Tabel Jabatan
                         </a>
-                        <a class="nav-link" href="{{ route('jumlahs.index') }}">
+                        <a class="nav-link @if ($currentRouteName == 'jumlahs.index') active @endif"
+                            href="{{ route('jumlahs.index') }}">
                             <div class="sb-nav-link-icon"><i class="bi bi-table"></i></div>
                             Tabel Jumlah Pegawai
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Pranala</div>
+                        <a class="nav-link" href="{{ route('home') }}">
+                            <div class="sb-nav-link-icon"><i class="bi bi-arrow-up-right-circle"></i></div>
+                            Ke Beranda
                         </a>
                     </div>
                 </div>
@@ -92,14 +109,7 @@
             <main>
                 @yield('content')
             </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Kejaksaan Tinggi Jawa Timur 2023</div>
-
-                    </div>
-                </div>
-            </footer>
+            @include('layouts.footer')
         </div>
     </div>
 

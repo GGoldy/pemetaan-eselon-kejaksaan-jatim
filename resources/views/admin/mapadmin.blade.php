@@ -8,11 +8,12 @@
             justify-content: center;
             align-items: center;
             height: 80vh;
+            width: 100%;
         }
 
         #map {
-            width: 90vw;
-            height: 80vh;
+            width: 100%;
+            height: 100%;
         }
 
         #searchdiv input:focus {
@@ -21,13 +22,5 @@
     </style>
 @endsection
 @section('content')
-    <div class="container-fluid">
-        <!-- Page Heading -->
-        <div class="d-flex align-items-center justify-content-center my-3">
-            <h3 class="mb-0 text-center">Pemetaan Satuan Kerja Kejaksaan Tinggi Jawa Timur</h3>
-        </div>
-
-        @include('layouts.map')
-
-    </div>
+    @include('layouts.map')
 @endsection

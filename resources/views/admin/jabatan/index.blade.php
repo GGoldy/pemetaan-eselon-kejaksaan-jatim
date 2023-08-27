@@ -34,10 +34,12 @@
                                         class="btn btn-outline-dark btn-sm me-2"><i class="bi bi-pencil-square"></i></a>
                                 </div>
                                 <div>
-                                    <form action="{{ route('jabatans.destroy', $jabatan->id) }}" method="POST">
+                                    <form id="deleteForm{{ $jabatan->id }}" class=""
+                                        action="{{ route('jabatans.destroy', $jabatan->id) }}" method="POST">
                                         @csrf
                                         @method('delete')
-                                        <button type="submit" class="btn btn-outline-dark btn-sm ">
+                                        <button class="btn btn-outline-dark btn-sm"
+                                            onclick="submitDeleteForm('deleteForm{{ $jabatan->id }}')">
                                             <i class="bi-trash"></i>
                                         </button>
                                     </form>
@@ -52,9 +54,30 @@
     </div>
 @endsection
 @push('scripts')
-    <script type="module">
+    <script>
         $(document).ready(function() {
             $('#jabatanTable').DataTable();
         });
+
+        function submitDeleteForm(formId) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Hapus Satuan Kerja',
+                text: "Yakin ingin menghapus satuan kerja?",
+                icon: 'warning',
+                showCancelButton: true, // Show the "Cancel" button
+                confirmButtonText: 'Yes', // Text for the "Yes" button
+                cancelButtonText: 'No', // Text for the "No" button
+                buttonsStyling: false, // Disable SweetAlert's default styling for buttons
+                customClass: {
+                    confirmButton: 'btn btn-success mx-2', // Add classes to the "Yes" button
+                    cancelButton: 'btn btn-danger mx-2' // Add classes to the "No" button
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById(formId).submit();
+                }
+            });
+        }
     </script>
 @endpush

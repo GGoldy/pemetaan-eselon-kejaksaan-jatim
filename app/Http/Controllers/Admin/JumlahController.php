@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\MySqlConnection;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Satker;
 use App\Models\Jabatan;
 
@@ -18,7 +19,7 @@ class JumlahController extends Controller
      */
     public function index()
     {
-        $pageTitle = 'Tabel Pemetaan Jumlah Pegawai SATKER KEJATI JATIM';
+        $pageTitle = 'Tabel Pemetaan Jumlah Pegawai berdasar Jabatan dalam Satuan Kerja KEJATI JATIM';
 
         $satkers = Satker::with('jabatans')->get();
 
@@ -60,6 +61,8 @@ class JumlahController extends Controller
         }
 
         $satkers->jabatans()->sync([$jabatan => ['jumlah' => $jumlah, 'created_at' => now(), 'updated_at' => now()]], false);
+
+        Alert::alert('Sukses!', 'Data Jumlah Pegawai Berhasil Ditambahkan', 'success');
 
         return redirect()->route('jumlahs.index');
     }
@@ -123,6 +126,7 @@ class JumlahController extends Controller
 
         $satkers->jabatans()->updateExistingPivot($jabatans->id, $newData);
 
+        Alert::alert('Sukses!', 'Data Jumlah Pegawai Berhasil Diubah', 'success');
 
         return redirect()->route('jumlahs.index');
     }
@@ -133,6 +137,7 @@ class JumlahController extends Controller
     public function destroy(string $id)
     {
         DB::table('jumlahs')->where('id', $id)->delete();
+        Alert::alert('Sukses!', 'Data Jumlah Pegawai Berhasil Dihapus', 'success');
         return redirect()->route('jumlahs.index');
     }
 }
