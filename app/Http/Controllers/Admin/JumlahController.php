@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Database\MySqlConnection;
-use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Satker;
 use App\Models\Jabatan;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Database\MySqlConnection;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 
 class JumlahController extends Controller
@@ -56,13 +56,27 @@ class JumlahController extends Controller
 
         $satkers = Satker::find($satker);
 
-        if ($validator->fails() or $satkers->jabatans->contains('id',$jabatan)) {
+        if ($validator->fails()) {
             return redirect()->back()->withErrors('Terjadi Kesalahan!')->withInput();
         }
+        if ($satkers->jabatans->contains('id', $jabatan)) {
+            // If it exists, update the 'jumlah' variable
+            $newData = [
+                'updated_at' => now(),
+                'jumlah' => $jumlah, // Update the 'jumlah' column in the pivot table
+            ];
 
-        $satkers->jabatans()->sync([$jabatan => ['jumlah' => $jumlah, 'created_at' => now(), 'updated_at' => now()]], false);
+            $satkers->jabatans()->updateExistingPivot($jabatan, $newData);
+            Alert::alert('Peringatan!', 'Data Jumlah Pegawai Yang Dimasukkan Sudah Ada. Sistem Menggantikan Data Jumlah Yang Sudah Ada.', 'warning');
+        } else {
+            // If it doesn't exist, create a new pivot record
 
-        Alert::alert('Sukses!', 'Data Jumlah Pegawai Berhasil Ditambahkan', 'success');
+            $satkers->jabatans()->sync([$jabatan => ['jumlah' => $jumlah, 'created_at' => now(), 'updated_at' => now()]], false);
+            Alert::alert('Sukses!', 'Data Jumlah Pegawai Berhasil Ditambahkan', 'success');
+        }
+
+        // $satkers->jabatans()->sync([$jabatan => ['jumlah' => $jumlah, 'created_at' => now(), 'updated_at' => now()]], false);
+
 
         return redirect()->route('jumlahs.index');
     }
