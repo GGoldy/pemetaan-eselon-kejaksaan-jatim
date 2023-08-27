@@ -30,7 +30,6 @@
     // add marker to some places in map and give details
 
     const satkers = @json($satkers);
-    console.log(satkers);
     var markers = [];
 
     satkers.forEach(function(satker) {

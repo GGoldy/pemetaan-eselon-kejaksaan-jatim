@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Satker;
 use App\Models\Jabatan;
+use App\Models\Jumlah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -34,7 +35,8 @@ class JumlahController extends Controller
         $pageTitle = 'Buat Jumlah Pegawai';
         $satkers = Satker::all();
         $jabatans = Jabatan::all();
-        return view('admin.jumlahpegawai.create', compact('pageTitle','satkers','jabatans'));
+        $jumlahs = Jumlah::all();
+        return view('admin.jumlahpegawai.create', compact('pageTitle','satkers','jabatans', 'jumlahs'));
     }
 
     /**

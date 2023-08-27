@@ -29,11 +29,11 @@
                         <div class="col-md-12 mb-3">
                             <label for="jabatan" class="form-label">Jabatan</label>
                             <select name="jabatan" id="jabatan" class="form-select">
-                                @foreach ($jabatans as $jabatan)
+                                {{-- @foreach ($jabatans as $jabatan)
                                     <option value="{{ $jabatan->id }}"
                                         {{ old('jabatan') == $jabatan->id ? 'selected' : '' }}>
                                         {{ $jabatan->id . ' - ' . $jabatan->nama_jabatan }}</option>
-                                @endforeach
+                                @endforeach --}}
                             </select>
                             @error('jabatan')
                                 <div class="text-danger"><small>{{ $message }}</small></div>
@@ -65,3 +65,37 @@
         </form>
     </div>
 @endsection
+@push('scripts')
+    <script>
+        const jabatans = @json($jabatans);
+        const jumlahs = @json($jumlahs);
+
+
+        function showRemainingJabatan() {
+            var selectedSatker = $('#satker').val();
+            var jabatanDropdown = $('#jabatan');
+
+            var filteredJumlahs = jumlahs.filter(function(jumlah) {
+                return jumlah.satker_id == selectedSatker;
+            });
+
+
+
+            var filteredJabatans = jabatans.filter(function(jabatan) {
+                return !filteredJumlahs.some(function(jumlah) {
+                    return jumlah.jabatan_id == jabatan.id;
+                });
+            });
+
+
+            jabatanDropdown.empty();
+            $.each(filteredJabatans, function(index, filteredJabatan) {
+                jabatanDropdown.append(new Option(`${filteredJabatan.id} - ${filteredJabatan.nama_jabatan}`));
+            });
+        }
+        showRemainingJabatan();
+        $(document).ready(function() {
+            $('#satker').on('change', showRemainingJabatan);
+        });
+    </script>
+@endpush
