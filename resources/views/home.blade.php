@@ -24,16 +24,6 @@
             width: 100%;
             height: 100%;
         }
-
-        #searchdiv input:focus {
-            outline: none;
-        }
-
-        @media (max-width: 770px) {
-            * {
-                font-size: 2vw;
-            }
-        }
     </style>
 @endsection
 @section('content')

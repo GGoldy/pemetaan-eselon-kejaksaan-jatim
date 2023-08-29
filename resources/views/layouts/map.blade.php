@@ -1,6 +1,6 @@
 <!-- Content Map -->
 <div class="map-wrapper">
-    <div id="map" class="d-grid">
+    <div id="map">
     </div>
 </div>
 
