@@ -100,7 +100,11 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    {{ Auth::user()->name }}
+                    @auth
+                        {{ Auth::user()->name }}
+                    @else
+                        Null
+                    @endauth
                 </div>
             </nav>
         </div>
