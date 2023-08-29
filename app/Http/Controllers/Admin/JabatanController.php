@@ -114,4 +114,34 @@ class JabatanController extends Controller
         Alert::alert('Sukses!', 'Data Jabatan Berhasil Dihapus', 'success');
         return redirect()->route('jabatans.index');
     }
+
+    public function deleteMultiple()
+  {
+    $pageTitle = 'Hapus Multi Data Jumlah Pegawai';
+
+    $jabatans = Jabatan::all();
+
+    return view('admin.jabatan.deleteMultiple', ['pageTitle' => $pageTitle], ['jabatans' => $jabatans]);
+  }
+
+  public function deleteMultipleGo(Request $request)
+  {
+    $selectedIds = $request->input('selected_ids');
+
+    $selectedIdsArray = explode(',', $selectedIds);
+
+    // dd($selectedIdsArray);
+    // Check if any IDs are selected
+    if (!empty($selectedIdsArray)) {
+
+      Jabatan::whereIn('id', $selectedIdsArray)->delete();
+
+      // Redirect back to the index page
+      Alert::alert('Sukses!', 'Data Jumlah Pegawai Berhasil Dihapus', 'success');
+      return redirect()->route('jabatans.index');
+    } else {
+      // If no IDs are selected, show a message and redirect
+      return redirect()->route('jabatans.index')->with('error', 'No items were selected for deletion.');
+    }
+  }
 }

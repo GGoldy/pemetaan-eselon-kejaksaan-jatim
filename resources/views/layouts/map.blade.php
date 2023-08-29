@@ -1,13 +1,13 @@
 <!-- Content Map -->
 
 <div class="map-wrapper">
-    <div id="map" class="d-grid" style="z-index: 1">
-        <div id="searchdiv" class="d-flex align-items-center justify-content-center me-2 mt-2"
-            style="z-index: 2 ;position:absolute; align-self:flex-start; justify-self:flex-end; background-color:white; border:1px solid black;">
+    <div id="map" class="d-grid" style="z-index: 2">
+        {{-- <div id="searchdiv" class="d-flex align-items-center justify-content-center me-2 mt-2"
+            style="z-index: 5 ;position:absolute; align-self:flex-start; justify-self:flex-end; background-color:white; border:1px solid black;">
             <i class="bi bi-search px-2" style="font-size: 2vw"></i>
             <input oninput="filterSatker()" type="text" class="search" id="inputFilter" name="inputFilter"
                 style="border: none; font-size:2vw">
-        </div>
+        </div> --}}
     </div>
 
 </div>
@@ -19,6 +19,9 @@
         9
     );
 
+    // popup responsive for then put in bindPopup
+
+
     // load a tile layer
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "Data Jumlah Pegawai dalam wilayah kerja Kejaksaan Tinggi Jawa Timur",
@@ -26,9 +29,27 @@
         minZoom: 8,
     }).addTo(map);
 
+    // Create a Leaflet control for the search input
+    var searchControl = L.control({
+        position: 'topright'
+    });
+
+    // Set the content of the control (your search input)
+    searchControl.onAdd = function(map) {
+        var div = L.DomUtil.create('div', 'search-control');
+        div.innerHTML = `
+        <div class="d-flex align-items-center justify-content-center me-2 mt-2 bg-white rounded">
+            <i class="bi bi-search px-2" style="font-size: 2vw"></i>
+            <input oninput="filterSatker()" type="text" class="search rounded" id="inputFilter" name="inputFilter" style="border: none; font-size: 2vw; outline:none;">
+        </div>
+    `;
+        return div;
+    };
+
+    // Add the control to the map
+    searchControl.addTo(map);
 
     // add marker to some places in map and give details
-
     const satkers = @json($satkers);
     var markers = [];
 
@@ -37,12 +58,8 @@
         var longitude = Number(parts[0]);
         var altitude = Number(parts[1]);
 
-        var marker = L.marker([longitude, altitude], {
-                title: (satker.nama),
-            })
-            .addTo(map)
-            .bindPopup(
-                ` <h5> ${satker.nama} </h5><br>
+        var popup = L.responsivePopup().setContent(
+            ` <h5> ${satker.nama} </h5><br>
                 <h6>Daftar Pegawai : </h6>
                 <table class='table table-hover table-bordered'>
                   <tr>
@@ -52,13 +69,18 @@
 
                   ${satker.jabatans.map(jabatan => `<tr><td>${jabatan.nama_jabatan}</td><td>${jabatan.pivot.jumlah}</td></tr>`).join('')}
 
-                    </table>`, {
-                    maxWidth: 500,
-                    maxHeight: 200
+                    </table>`);
+
+        var marker = L.marker([longitude, altitude], {
+                title: (satker.nama),
+            })
+            .addTo(map)
+            .bindPopup(
+                popup, {
+                    maxWidth: 325,
+                    maxHeight: 175
                 }
             )
-
-
         markers.push(marker)
     });
 
@@ -86,10 +108,8 @@
             var longitude = Number(parts[0]);
             var altitude = Number(parts[1]);
 
-            var marker = L.marker([longitude, altitude])
-                .addTo(map)
-                .bindPopup(
-                    ` <h5> ${satker.nama} </h5><br>
+            var popup = L.responsivePopup().setContent(
+                ` <h5> ${satker.nama} </h5><br>
                 <h6>Daftar Pegawai : </h6>
                 <table class='table table-hover table-bordered'>
                   <tr>
@@ -99,9 +119,14 @@
 
                   ${satker.jabatans.map(jabatan => `<tr><td>${jabatan.nama_jabatan}</td><td>${jabatan.pivot.jumlah}</td></tr>`).join('')}
 
-                    </table>`, {
-                        maxWidth: 500,
-                        maxHeight: 200
+                    </table>`);
+
+            var marker = L.marker([longitude, altitude])
+                .addTo(map)
+                .bindPopup(
+                    popup, {
+                        maxWidth: 325,
+                        maxHeight: 175
                     }
                 )
             markers.push(marker);

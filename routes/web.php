@@ -29,9 +29,16 @@ Route::get('/admin/peta', [DashboardController::class, 'index'])->name('peta');
 Route::resource('/admin/satker', SatkerController::class, ['names' => 'satkers']);
 Route::resource('/admin/jabatan', JabatanController::class, ['names' => 'jabatans']);
 Route::resource('/admin/jumlahpegawai', JumlahController::class, ['names' => 'jumlahs']);
-Route::get('/admin/deleteMultiple', [JumlahController::class, 'deleteMultiple'])->name('jumlahs.deleteMultiple');
-Route::get('/admin/deleteMultipleGo', [JumlahController::class, 'deleteMultipleGo'])->name('jumlahs.deleteMultipleGo');
 
+// route delete multiple item
+Route::get('/admin/deleteMultipleJumlahPegawai', [JumlahController::class, 'deleteMultiple'])->name('jumlahs.deleteMultiple');
+Route::get('/admin/deleteMultipleJumlahPegawaiGo', [JumlahController::class, 'deleteMultipleGo'])->name('jumlahs.deleteMultipleGo');
+Route::get('/admin/deleteMultipleSatker', [SatkerController::class, 'deleteMultiple'])->name('satkers.deleteMultiple');
+Route::get('/admin/deleteMultipleSatkerGo', [SatkerController::class, 'deleteMultipleGo'])->name('satkers.deleteMultipleGo');
+Route::get('/admin/deleteMultipleJabatan', [JabatanController::class, 'deleteMultiple'])->name('jabatans.deleteMultiple');
+Route::get('/admin/deleteMultipleJabatanGo', [JabatanController::class, 'deleteMultipleGo'])->name('jabatans.deleteMultipleGo');
+
+// routes authentication
 Auth::routes();
 
 

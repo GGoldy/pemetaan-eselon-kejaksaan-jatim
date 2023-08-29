@@ -160,14 +160,16 @@ class JumlahController extends Controller
     Alert::alert('Sukses!', 'Data Jumlah Pegawai Berhasil Dihapus', 'success');
     return redirect()->route('jumlahs.index');
   }
+
   public function deleteMultiple()
   {
-    $pageTitle = 'Test';
+    $pageTitle = 'Hapus Multi Data Jumlah Pegawai';
 
     $satkers = Satker::with('jabatans')->get();
     $jumlahs = Jumlah::all();
     return view('admin.jumlahpegawai.deleteMultiple', ['pageTitle' => $pageTitle], ['satkers' => $satkers], ['jumlahs' => $jumlahs]);
   }
+
   public function deleteMultipleGo(Request $request)
   {
     $selectedIds = $request->input('selected_ids');

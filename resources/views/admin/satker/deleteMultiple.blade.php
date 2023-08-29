@@ -7,12 +7,23 @@
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Daftar Satuan Kerja Kejaksaan Tinggi Jawa Timur</li>
             </ol>
-            <a class="btn btn-dark" href="{{ route('satkers.create') }}" style="white-space:nowrap;">Tambah Satker</a>
+
         </div>
     </div>
     <hr>
     <div class="d-flex justify-content-end m-4">
-        <a class="btn btn-dark" href="{{ route('satkers.deleteMultiple') }}">Delete Multiple</a>
+        <!-- First Button -->
+        <a class="btn btn-dark" href="{{ route('satkers.index') }}">Cancel</a>
+        <div class="mx-2"></div>
+        <!-- Second Button -->
+        @php
+            $selectedIdsString = '';
+        @endphp
+        <form id="deleteForm" action="{{ route('satkers.deleteMultipleGo') }}" method="GET">
+            @csrf
+            <input type="hidden" name="selected_ids" id="selected_ids" value="{{ $selectedIdsString }}">
+            <button type="submit" class="btn btn-danger" onclick="submitDeleteForm('deleteForm')">Delete Selected</button>
+        </form>
     </div>
     <div class="table-responsive border p-3 rounded-3 m-4">
         <table class="table table-bordered table-hover table-striped mb-0 bg-white" id="satkerTable">
@@ -33,21 +44,8 @@
                         <td>
                             <div class="d-flex justify-content-center">
                                 <div>
-                                    <a type="submit" href="{{ route('satkers.edit', $satker->id) }}"
-                                        class="btn btn-outline-dark btn-sm me-2"><i class="bi bi-pencil-square"></i></a>
+                                    <input type="checkbox" name="selected_ids[]" value="{{ $satker->id }}">
                                 </div>
-                                <div>
-                                    <form id="deleteForm{{ $satker->id }}" class=""
-                                        action="{{ route('satkers.destroy', $satker->id) }}" method="POST">
-                                        @csrf
-                                        @method('delete')
-                                        <button class="btn btn-outline-dark btn-sm"
-                                            onclick="submitDeleteForm('deleteForm{{ $satker->id }}')">
-                                            <i class="bi-trash"></i>
-                                        </button>
-                                    </form>
-                                </div>
-
                             </div>
                         </td>
                     </tr>
@@ -82,5 +80,49 @@
                 }
             });
         }
+
+        function removeDuplicates(arr) {
+            return [...new Set(arr)];
+        }
+
+        function removeDuplicatesFromArray(baseArray, removeArray) {
+            // Create a Set from the second array for faster lookup
+            const removeSet = new Set(removeArray);
+
+            // Use filter() to create a new array with only unique elements
+            const uniqueArray = baseArray.filter(item => !removeSet.has(item));
+
+            return uniqueArray;
+        }
+
+        var selectedIds = [];
+        var selectedIdsString;
+        $('input[type="checkbox"]').on('change', function() {
+            var allCheckboxes = $('input[type="checkbox"]');
+            var unSelectedCheckboxes = [];
+
+            allCheckboxes.each(function() {
+                var checkbox = $(this);
+
+                if (checkbox.is(':checked')) {
+                    selectedIds.push(checkbox.val());
+                } else {
+                    unSelectedCheckboxes.push(checkbox.val())
+                }
+            });
+
+            // Update the hidden input value
+            // Convert the array to a comma-separated string
+
+            selectedIds = removeDuplicatesFromArray(selectedIds, unSelectedCheckboxes);
+            selectedIds = removeDuplicates(selectedIds)
+            selectedIdsString = selectedIds.join(',')
+
+            console.log(unSelectedCheckboxes)
+            console.log(selectedIds)
+            console.log(selectedIdsString)
+
+            $('#selected_ids').val(selectedIdsString);
+        });
     </script>
 @endpush

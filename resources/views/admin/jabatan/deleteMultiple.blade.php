@@ -2,11 +2,10 @@
 
 @section('content')
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Jumlah Pegawai</h1>
+        <h1 class="mt-4">Jabatan</h1>
         <div class="d-flex justify-content-between align-items-center">
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Daftar Jumlah Pegawai dari masing - masing satuan kerja yang berada pada
-                    wilayah
+                <li class="breadcrumb-item active">Daftar Jabatan dari masing - masing satuan kerja yang berada pada wilayah
                     kerja Kejaksaan Tinggi Jawa Timur</li>
             </ol>
 
@@ -15,54 +14,39 @@
     <hr>
     <div class="d-flex justify-content-end m-4">
         <!-- First Button -->
-        <a class="btn btn-dark" href="{{ route('jumlahs.index') }}">Cancel</a>
+        <a class="btn btn-dark" href="{{ route('jabatans.index') }}">Cancel</a>
         <div class="mx-2"></div>
         <!-- Second Button -->
         @php
             $selectedIdsString = '';
         @endphp
-        <form id="deleteForm" action="{{ route('jumlahs.deleteMultipleGo') }}" method="GET">
+        <form id="deleteForm" action="{{ route('jabatans.deleteMultipleGo') }}" method="GET">
             @csrf
             <input type="hidden" name="selected_ids" id="selected_ids" value="{{ $selectedIdsString }}">
             <button type="submit" class="btn btn-danger" onclick="submitDeleteForm('deleteForm')">Delete Selected</button>
         </form>
     </div>
     <div class="table-responsive border p-3 rounded-3 m-4">
-        <table class="table table-bordered table-hover table-striped mb-0 bg-white" id="jumlahTable">
+        <table class="table table-bordered table-hover table-striped mb-0 bg-white" id="jabatanTable">
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Satuan Kerja</th>
-                    <th>Jabatan</th>
-                    <th>Jumlah Pegawai</th>
+                    <th>Nama Jabatan</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                @php
-                    $index = 1;
-                @endphp
-                @foreach ($satkers as $satker)
-                    @foreach ($satker->jabatans as $jabatan)
-                        <tr>
-                            <td>{{ $index }}</td>
-
-                            <td>{{ $satker->nama }}</td>
-                            <td>{{ $jabatan->nama_jabatan }}</td>
-                            <td>{{ $jabatan->pivot->jumlah }}</td>
-
-                            <td>
-                                <div class="d-flex justify-content-center">
-                                    <div>
-                                        <input type="checkbox" name="selected_ids[]" value="{{ $jabatan->pivot->id }}">
-                                    </div>
+                @foreach ($jabatans as $index => $jabatan)
+                    <tr>
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ $jabatan->nama_jabatan }}</td>
+                        <td>
+                            <div class="d-flex justify-content-center">
+                                <div>
+                                    <input type="checkbox" name="selected_ids[]" value="{{ $jabatan->id }}">
                                 </div>
-                            </td>
-                            @php
-                                $index += 1;
-                            @endphp
-                    @endforeach
-
+                            </div>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
@@ -72,14 +56,14 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $('#jumlahTable').DataTable();
+            $('#jabatanTable').DataTable();
         });
 
         function submitDeleteForm(formId) {
             event.preventDefault();
             Swal.fire({
-                title: 'Hapus Jumlah Pegawai',
-                text: "Yakin ingin menghapus jumlah pegawai?",
+                title: 'Hapus Jabatan',
+                text: "Yakin ingin menghapus jabatan?",
                 icon: 'warning',
                 showCancelButton: true, // Show the "Cancel" button
                 confirmButtonText: 'Yes', // Text for the "Yes" button
@@ -115,7 +99,6 @@
         $('input[type="checkbox"]').on('change', function() {
             var allCheckboxes = $('input[type="checkbox"]');
             var unSelectedCheckboxes = [];
-
 
             allCheckboxes.each(function() {
                 var checkbox = $(this);

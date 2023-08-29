@@ -29,15 +29,13 @@
 
     <!-- sweet alert import for js functionality inside view -->
     <script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
-
-    @stack('style-alt')
 </head>
 
 <body class="sb-nav-fixed">
     <!-- including sweet alert to use with facades in controller -->
     @include('sweetalert::alert')
 
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark shadow-sm">
         <!-- Sidebar Toggle -->
         <!-- Navbar Toggle -->
         <button class="btn btn-link btn-sm order-0 order-lg-0 mx-1 px-4 me-lg-0" id="sidebarToggle"><i
@@ -116,8 +114,6 @@
             @include('layouts.footer')
         </div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     @vite(['resources/js/app.js'])
     @stack('scripts')
 </body>

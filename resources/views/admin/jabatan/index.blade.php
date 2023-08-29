@@ -8,10 +8,13 @@
                 <li class="breadcrumb-item active">Daftar Jabatan dari masing - masing satuan kerja yang berada pada wilayah
                     kerja Kejaksaan Tinggi Jawa Timur</li>
             </ol>
-            <a class="btn btn-dark" href="{{ route('jabatans.create') }}">Buat jabatan</a>
+            <a class="btn btn-dark" href="{{ route('jabatans.create') }}" style="white-space:nowrap;">Tambah Jabatan</a>
         </div>
     </div>
     <hr>
+    <div class="d-flex justify-content-end m-4">
+        <a class="btn btn-dark" href="{{ route('jabatans.deleteMultiple') }}">Delete Multiple</a>
+    </div>
     <div class="table-responsive border p-3 rounded-3 m-4">
         <table class="table table-bordered table-hover table-striped mb-0 bg-white" id="jabatanTable">
             <thead>

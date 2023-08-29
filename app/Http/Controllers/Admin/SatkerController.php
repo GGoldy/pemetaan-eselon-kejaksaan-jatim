@@ -133,6 +133,33 @@ class SatkerController extends Controller
         Satker::find($id)->delete();
         Alert::alert('Sukses!', 'Data Satuan Kerja Berhasil Dihapus', 'success');
         return redirect()->route('satkers.index');
-
     }
+
+    public function deleteMultiple()
+  {
+    $pageTitle = 'Hapus Multi Data Jumlah Pegawai';
+
+    $satkers = Satker::all();
+    return view('admin.satker.deleteMultiple', ['pageTitle' => $pageTitle], ['satkers' => $satkers]);
+  }
+
+  public function deleteMultipleGo(Request $request)
+  {
+    $selectedIds = $request->input('selected_ids');
+
+    $selectedIdsArray = explode(',', $selectedIds);
+
+    // Check if any IDs are selected
+    if (!empty($selectedIdsArray)) {
+
+      Satker::whereIn('id', $selectedIdsArray)->delete();
+
+      // Redirect back to the index page
+      Alert::alert('Sukses!', 'Data Jumlah Pegawai Berhasil Dihapus', 'success');
+      return redirect()->route('satkers.index');
+    } else {
+      // If no IDs are selected, show a message and redirect
+      return redirect()->route('satkers.index')->with('error', 'No items were selected for deletion.');
+    }
+  }
 }

@@ -4,17 +4,17 @@
     <div class="container-fluid px-4">
         <h1 class="mt-4">Jumlah Pegawai</h1>
         <div class="d-flex justify-content-between align-items-center">
-            <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Daftar Jumlah Pegawai dari masing - masing satuan kerja yang berada pada
-                    wilayah
-                    kerja Kejaksaan Tinggi Jawa Timur</li>
-            </ol>
-            <a class="btn btn-dark" href="{{ route('jumlahs.create') }}">Buat Jumlah Pegawai</a>
+            <p class="my-0">
+                Daftar Jumlah Pegawai dari masing - masing satuan kerja yang berada pada wilayahkerja Kejaksaan Tinggi Jawa
+                Timur
+            </p>
+            <a class="btn btn-dark text-center" href="{{ route('jumlahs.create') }}" style="white-space:nowrap;">Tambah
+                Jumlah Pegawai</a>
         </div>
     </div>
     <hr>
     <div class="d-flex justify-content-end m-4">
-      <a class="btn btn-dark" href="{{ route('jumlahs.deleteMultiple') }}">Delete Multiple</a>
+        <a class="btn btn-dark" href="{{ route('jumlahs.deleteMultiple') }}">Delete Multiple</a>
     </div>
     <div class="table-responsive border p-3 rounded-3 m-4">
         <table class="table table-bordered table-hover table-striped mb-0 bg-white" id="jumlahTable">
