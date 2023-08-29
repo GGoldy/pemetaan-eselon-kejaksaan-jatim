@@ -1,15 +1,7 @@
 <!-- Content Map -->
-
 <div class="map-wrapper">
-    <div id="map" class="d-grid" style="z-index: 2">
-        {{-- <div id="searchdiv" class="d-flex align-items-center justify-content-center me-2 mt-2"
-            style="z-index: 5 ;position:absolute; align-self:flex-start; justify-self:flex-end; background-color:white; border:1px solid black;">
-            <i class="bi bi-search px-2" style="font-size: 2vw"></i>
-            <input oninput="filterSatker()" type="text" class="search" id="inputFilter" name="inputFilter"
-                style="border: none; font-size:2vw">
-        </div> --}}
+    <div id="map" class="d-grid">
     </div>
-
 </div>
 
 <script>
@@ -18,9 +10,6 @@
         [-7.681107274810605, 112.4458139235079],
         9
     );
-
-    // popup responsive for then put in bindPopup
-
 
     // load a tile layer
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -58,6 +47,7 @@
         var longitude = Number(parts[0]);
         var altitude = Number(parts[1]);
 
+        // popup responsive for then put in bindPopup
         var popup = L.responsivePopup().setContent(
             ` <h5> ${satker.nama} </h5><br>
                 <h6>Daftar Pegawai : </h6>
