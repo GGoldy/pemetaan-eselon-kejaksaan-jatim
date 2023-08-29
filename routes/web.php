@@ -29,6 +29,9 @@ Route::get('/admin/peta', [DashboardController::class, 'index'])->name('peta');
 Route::resource('/admin/satker', SatkerController::class, ['names' => 'satkers']);
 Route::resource('/admin/jabatan', JabatanController::class, ['names' => 'jabatans']);
 Route::resource('/admin/jumlahpegawai', JumlahController::class, ['names' => 'jumlahs']);
+Route::get('/admin/deleteMultiple', [JumlahController::class, 'deleteMultiple'])->name('jumlahs.deleteMultiple');
+Route::get('/admin/deleteMultipleGo', [JumlahController::class, 'deleteMultipleGo'])->name('jumlahs.deleteMultipleGo');
+
 Auth::routes();
 
 
