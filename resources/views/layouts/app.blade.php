@@ -45,8 +45,6 @@
                                 <img src="{{ Vite::asset('resources/images/logokejaksaan.png') }}" alt=""
                                     style="height:40px;">
                             </a>
-
-
                         </li>
                         <li class="nav-item">
                             <a class="navbar-brand d-flex align-items-center justify-content-center"
@@ -82,21 +80,19 @@
                                 <div class="dropdown-menu dropdown-menu-end navbar-dark bg-dark "
                                     aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('admin') }}" style="color:white;"
-                                        onmouseover="this.style.color='black';"
-                                        onmouseout="this.style.color='white';">{{ __('Dasbor') }}</a>
+                                        onmouseover="this.style.color='black';" onmouseout="this.style.color='white';"><i
+                                            class="bi bi-house me-1"></i>{{ __('Dasbor Admin') }}</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"
                                         style="color:white;" onmouseover="this.style.color='black';"
-                                        onmouseout="this.style.color='white';">
+                                        onmouseout="this.style.color='white';"><i class="bi bi-box-arrow-right"></i>
                                         {{ __('Logout') }}
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-
-
                                 </div>
                             </li>
                         @endguest
@@ -105,7 +101,7 @@
             </div>
         </nav>
 
-        <main class="" style="height:80vh;">
+        <main class="">
             @yield('content')
         </main>
         @include('layouts.footer')

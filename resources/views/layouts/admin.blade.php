@@ -41,10 +41,12 @@
         <button class="btn btn-link btn-sm order-0 order-lg-0 mx-1 px-4 me-lg-0" id="sidebarToggle"><i
                 class="bi bi-list fs-3"></i></button>
         <!-- Navbar Brand -->
-        <b><a class="navbar-brand px-3" href="{{ route('admin') }}">Satuan Kerja Kejati Jatim</a></b>
+        <a class="navbar-brand px-3" href="{{ route('admin') }}"><img class="me-1"
+                src="{{ Vite::asset('resources/images/logokejaksaan.png') }}" alt="" style="height:40px;">
+            <b>Pemetaan Satuan Kerja Kejaksaan Tinggi Jawa Timur</b>
+        </a>
 
         <!-- ... navigation menu ... -->
-
         <!-- Navbar Dropdown -->
         <div class="dropdown ms-auto me-3 me-lg-4">
             <a class="dropdown-item text-danger" href="{{ route('logout') }}"
@@ -92,7 +94,7 @@
                         <div class="sb-sidenav-menu-heading">Pranala</div>
                         <a class="nav-link" href="{{ route('home') }}">
                             <div class="sb-nav-link-icon"><i class="bi bi-arrow-up-right-circle"></i></div>
-                            Ke Beranda
+                            Beranda Pengunjung
                         </a>
                     </div>
                 </div>
@@ -101,7 +103,7 @@
                     @auth
                         {{ Auth::user()->name }}
                     @else
-                        Null
+                        Unauthorized User
                     @endauth
                 </div>
             </nav>
