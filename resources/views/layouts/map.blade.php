@@ -28,8 +28,8 @@
         var div = L.DomUtil.create('div', 'search-control');
         div.innerHTML = `
         <div class="d-flex align-items-center justify-content-center me-2 mt-2 bg-white rounded">
-            <i class="bi bi-search px-2" style="font-size: 2vw"></i>
-            <input oninput="filterSatker()" type="text" class="search rounded" id="inputFilter" name="inputFilter" style="border: none; font-size: 2vw; outline:none;">
+            <i class="bi bi-search px-2 fs-5" ></i>
+            <input oninput="filterSatker()" type="text" class="search rounded fs-5" id="inputFilter" name="inputFilter" style="border: none; outline:none;">
         </div>
     `;
         return div;
