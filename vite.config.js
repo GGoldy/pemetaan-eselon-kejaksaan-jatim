@@ -10,9 +10,12 @@ export default defineConfig({
         "resources/css/app.css",
       ],
       refresh: true,
-      server: {
-        host: true,
-      },
     }),
   ],
+  // Use it when want to test in mobile device
+  // run this in terminal 'php artisan serve --host your-local-ip-address'
+  // and this 'npm run dev --host'
+  // server: {
+  //   host: "192.168.18.168",
+  // },
 });
