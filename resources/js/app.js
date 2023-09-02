@@ -3,6 +3,8 @@ import "datatables.net-bs5";
 import "datatables.net-buttons-bs5";
 import.meta.glob(["../images/**"]);
 
+import 'datatables.net-responsive-dt';
+
 window.addEventListener("DOMContentLoaded", (event) => {
   // Toggle the side navigation
   const sidebarToggle = document.body.querySelector("#sidebarToggle");

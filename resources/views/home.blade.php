@@ -24,6 +24,13 @@
             width: 100%;
             height: 100%;
         }
+
+        @media (max-width: 770px) {
+            * {
+                font-size: 2vw;
+
+            }
+        }
     </style>
 @endsection
 @section('content')

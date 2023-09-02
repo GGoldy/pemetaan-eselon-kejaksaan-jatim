@@ -16,64 +16,72 @@
     <div class="d-flex justify-content-end m-4">
         <a class="btn btn-dark" href="{{ route('jumlahs.deleteMultiple') }}">Delete Multiple</a>
     </div>
-    <div class="table-responsive border p-3 rounded-3 m-4">
-        <table class="table table-bordered table-hover table-striped mb-0 bg-white" id="jumlahTable">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Satuan Kerja</th>
-                    <th>Jabatan</th>
-                    <th>Jumlah Pegawai</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @php
-                    $index = 1;
-                @endphp
-                @foreach ($satkers as $satker)
-                    @foreach ($satker->jabatans as $jabatan)
-                        <tr>
-                            <td>{{ $index }}</td>
-                            @php
-                                $index += 1;
-                            @endphp
-                            <td>{{ $satker->nama }}</td>
-                            <td>{{ $jabatan->nama_jabatan }}</td>
-                            <td>{{ $jabatan->pivot->jumlah }}</td>
+    <div class="container">
+      <div class="row tabres">
+        <div class="table-responsive border p-3 rounded-3 m-4">
+          <table class="table table-bordered table-hover table-striped mb-0 bg-white" id="jumlahTable">
+              <thead>
+                  <tr>
+                      <th>No</th>
+                      <th>Satuan Kerja</th>
+                      <th>Jabatan</th>
+                      <th>Jumlah Pegawai</th>
+                      <th>Aksi</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  @php
+                      $index = 1;
+                  @endphp
+                  @foreach ($satkers as $satker)
+                      @foreach ($satker->jabatans as $jabatan)
+                          <tr>
+                              <td>{{ $index }}</td>
+                              @php
+                                  $index += 1;
+                              @endphp
+                              <td>{{ $satker->nama }}</td>
+                              <td>{{ $jabatan->nama_jabatan }}</td>
+                              <td>{{ $jabatan->pivot->jumlah }}</td>
 
-                            <td>
-                                <div class="d-flex justify-content-center">
-                                    <div>
-                                        <a type="submit" href="{{ route('jumlahs.edit', $jabatan->pivot->id) }}"
-                                            class="btn btn-outline-dark btn-sm me-2"><i class="bi bi-pencil-square"></i></a>
-                                    </div>
-                                    <div>
-                                        <form id="deleteForm{{ $jabatan->pivot->id }}" class=""
-                                            action="{{ route('jumlahs.destroy', $jabatan->pivot->id) }}" method="POST">
-                                            @csrf
-                                            @method('delete')
-                                            <button class="btn btn-outline-dark btn-sm"
-                                                onclick="submitDeleteForm('deleteForm{{ $jabatan->pivot->id }}')">
-                                                <i class="bi-trash"></i>
-                                            </button>
-                                        </form>
-                                    </div>
+                              <td>
+                                  <div class="d-flex justify-content-start">
+                                      <div>
+                                          <a type="submit" href="{{ route('jumlahs.edit', $jabatan->pivot->id) }}"
+                                              class="btn btn-outline-dark btn-sm me-2"><i class="bi bi-pencil-square"></i></a>
+                                      </div>
+                                      <div>
+                                          <form id="deleteForm{{ $jabatan->pivot->id }}" class=""
+                                              action="{{ route('jumlahs.destroy', $jabatan->pivot->id) }}" method="POST">
+                                              @csrf
+                                              @method('delete')
+                                              <button class="btn btn-outline-dark btn-sm"
+                                                  onclick="submitDeleteForm('deleteForm{{ $jabatan->pivot->id }}')">
+                                                  <i class="bi-trash"></i>
+                                              </button>
+                                          </form>
+                                      </div>
 
-                                </div>
-                            </td>
-                    @endforeach
+                                  </div>
+                              </td>
 
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+                      @endforeach
+
+                      </tr>
+
+                  @endforeach
+              </tbody>
+          </table>
+      </div>
+      </div>
     </div>
 @endsection
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $('#jumlahTable').DataTable();
+            $('#jumlahTable').DataTable({
+                responsive: true,
+            });
         });
 
         function submitDeleteForm(formId) {

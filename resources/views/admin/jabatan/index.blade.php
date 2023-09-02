@@ -15,51 +15,59 @@
     <div class="d-flex justify-content-end m-4">
         <a class="btn btn-dark" href="{{ route('jabatans.deleteMultiple') }}">Delete Multiple</a>
     </div>
-    <div class="table-responsive border p-3 rounded-3 m-4">
-        <table class="table table-bordered table-hover table-striped mb-0 bg-white" id="jabatanTable">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama Jabatan</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($jabatans as $index => $jabatan)
-                    <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $jabatan->nama_jabatan }}</td>
+    <div class="container tabres">
+        <div class="row">
+            <div class="table-responsive border p-3 rounded-3 m-4">
+                <table class="table table-bordered table-hover table-striped mb-0 bg-white display nowrap" cellspacing="0"
+                    id="jabatanTable">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Jabatan</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($jabatans as $index => $jabatan)
+                            <tr>
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ $jabatan->nama_jabatan }}</td>
 
-                        <td>
-                            <div class="d-flex justify-content-center">
-                                <div>
-                                    <a type="submit" href="{{ route('jabatans.edit', $jabatan->id) }}"
-                                        class="btn btn-outline-dark btn-sm me-2"><i class="bi bi-pencil-square"></i></a>
-                                </div>
-                                <div>
-                                    <form id="deleteForm{{ $jabatan->id }}" class=""
-                                        action="{{ route('jabatans.destroy', $jabatan->id) }}" method="POST">
-                                        @csrf
-                                        @method('delete')
-                                        <button class="btn btn-outline-dark btn-sm"
-                                            onclick="submitDeleteForm('deleteForm{{ $jabatan->id }}')">
-                                            <i class="bi-trash"></i>
-                                        </button>
-                                    </form>
-                                </div>
+                                <td>
+                                    <div class="d-flex justify-content-start">
+                                        <div>
+                                            <a type="submit" href="{{ route('jabatans.edit', $jabatan->id) }}"
+                                                class="btn btn-outline-dark btn-sm me-2"><i
+                                                    class="bi bi-pencil-square"></i></a>
+                                        </div>
+                                        <div>
+                                            <form id="deleteForm{{ $jabatan->id }}" class=""
+                                                action="{{ route('jabatans.destroy', $jabatan->id) }}" method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn btn-outline-dark btn-sm"
+                                                    onclick="submitDeleteForm('deleteForm{{ $jabatan->id }}')">
+                                                    <i class="bi-trash"></i>
+                                                </button>
+                                            </form>
+                                        </div>
 
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 @endsection
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $('#jabatanTable').DataTable();
+            $('#jabatanTable').DataTable({
+                responsive: true
+            });
         });
 
         function submitDeleteForm(formId) {

@@ -14,52 +14,59 @@
     <div class="d-flex justify-content-end m-4">
         <a class="btn btn-dark" href="{{ route('satkers.deleteMultiple') }}">Delete Multiple</a>
     </div>
-    <div class="table-responsive border p-3 rounded-3 m-4">
-        <table class="table table-bordered table-hover table-striped mb-0 bg-white" id="satkerTable">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>Koordinat</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($satkers as $index => $satker)
-                    <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $satker->nama }}</td>
-                        <td>{{ $satker->longalt }}</td>
-                        <td>
-                            <div class="d-flex justify-content-center">
-                                <div>
-                                    <a type="submit" href="{{ route('satkers.edit', $satker->id) }}"
-                                        class="btn btn-outline-dark btn-sm me-2"><i class="bi bi-pencil-square"></i></a>
-                                </div>
-                                <div>
-                                    <form id="deleteForm{{ $satker->id }}" class=""
-                                        action="{{ route('satkers.destroy', $satker->id) }}" method="POST">
-                                        @csrf
-                                        @method('delete')
-                                        <button class="btn btn-outline-dark btn-sm"
-                                            onclick="submitDeleteForm('deleteForm{{ $satker->id }}')">
-                                            <i class="bi-trash"></i>
-                                        </button>
-                                    </form>
-                                </div>
+    <div class="container">
+        <div class="row tabres">
+            <div class="table-responsive border p-3 rounded-3 m-4">
+                <table class="table table-bordered table-hover table-striped mb-0 bg-white" id="satkerTable">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Koordinat</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($satkers as $index => $satker)
+                            <tr>
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ $satker->nama }}</td>
+                                <td>{{ $satker->longalt }}</td>
+                                <td>
+                                    <div class="d-flex justify-content-center">
+                                        <div>
+                                            <a type="submit" href="{{ route('satkers.edit', $satker->id) }}"
+                                                class="btn btn-outline-dark btn-sm me-2"><i
+                                                    class="bi bi-pencil-square"></i></a>
+                                        </div>
+                                        <div>
+                                            <form id="deleteForm{{ $satker->id }}" class=""
+                                                action="{{ route('satkers.destroy', $satker->id) }}" method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn btn-outline-dark btn-sm"
+                                                    onclick="submitDeleteForm('deleteForm{{ $satker->id }}')">
+                                                    <i class="bi-trash"></i>
+                                                </button>
+                                            </form>
+                                        </div>
 
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 @endsection
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $('#satkerTable').DataTable();
+            $('#satkerTable').DataTable({
+                responsive: true,
+            });
         });
 
         function submitDeleteForm(formId) {

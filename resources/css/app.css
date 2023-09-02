@@ -11241,3 +11241,15 @@ body {
   font-size: 0.75rem;
   border-radius: 0.375rem !important;
 }
+
+@media (max-width: 770px) {
+  * {
+      font-size: 2vw;
+  }
+}
+
+@media (max-width: 990px){
+  .tabres{
+    width: 75vw;
+  }
+}

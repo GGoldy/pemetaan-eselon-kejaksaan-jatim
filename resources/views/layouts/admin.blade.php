@@ -29,6 +29,8 @@
 
     <!-- sweet alert import for js functionality inside view -->
     <script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
+
+
 </head>
 
 <body class="sb-nav-fixed">
