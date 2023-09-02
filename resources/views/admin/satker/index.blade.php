@@ -14,10 +14,11 @@
     <div class="d-flex justify-content-end m-4">
         <a class="btn btn-dark" href="{{ route('satkers.deleteMultiple') }}">Delete Multiple</a>
     </div>
-    <div class="container">
+    <div class="container d-flex align-items-center justify-content-center">
         <div class="row tabres">
-            <div class="table-responsive border p-3 rounded-3 m-4">
-                <table class="table table-bordered table-hover table-striped mb-0 bg-white" id="satkerTable">
+            <div class="table-responsive border p-3 rounded-3">
+                <table class="table table-bordered table-hover table-striped mb-0 bg-white display responsive"
+                    width="100%" id="satkerTable">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -33,7 +34,7 @@
                                 <td>{{ $satker->nama }}</td>
                                 <td>{{ $satker->longalt }}</td>
                                 <td>
-                                    <div class="d-flex justify-content-center">
+                                    <div class="d-flex justify-content-center align-items-center w-100 h-100">
                                         <div>
                                             <a type="submit" href="{{ route('satkers.edit', $satker->id) }}"
                                                 class="btn btn-outline-dark btn-sm me-2"><i
@@ -66,6 +67,15 @@
         $(document).ready(function() {
             $('#satkerTable').DataTable({
                 responsive: true,
+                columnDefs: [{
+                        responsivePriority: 1,
+                        targets: 1
+                    },
+                    {
+                        responsivePriority: 2,
+                        targets: -1
+                    }
+                ]
             });
         });
 

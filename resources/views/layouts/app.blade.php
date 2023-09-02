@@ -29,31 +29,31 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
-            <div class="container">
+            <div class="container justify-content-start justify-content-md-between w-100">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="navbar-brand d-flex align-items-center justify-content-center"
+                {{-- item non collapsable --}}
+                <ul class="navbar-nav" style="width: 93%">
+                    <li class="nav-item d-grid w-100">
+                        <div class="row d-flex align-items-center">
+                            <a class="navbar-brand col-2 col-md-1 mx-0 px-0 py-0 d-flex justify-content-center"
                                 href="{{ url('/') }}">
-                                <img src="{{ Vite::asset('resources/images/logokejaksaan.png') }}" alt=""
-                                    style="height:40px;">
+                                <img class="" src="{{ Vite::asset('resources/images/logokejaksaan.png') }}"
+                                    alt="Logo Kejaksaan Tinggi Jawa Timur" style="height:40px;">
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="navbar-brand d-flex align-items-center justify-content-center"
-                                href="{{ url('/') }}">
+                            <a class="navbar-brand col-9 col-md-10 mx-0 px-0 py-0" href="{{ url('/') }}">
                                 <b class="text-wrap text-center"> Pemetaan Satuan Kerja Kejaksaan Tinggi Jawa Timur</b>
                             </a>
-                        </li>
-                    </ul>
+                        </div>
+                    </li>
+                </ul>
 
+                {{-- items collapsable --}}
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto navbar-dark bg-dark">
                         <!-- Authentication Links -->
@@ -71,7 +71,7 @@
                                 </li>
                             @endif --}}
                         @else
-                            <li class="nav-item dropdown ">
+                            <li class="nav-item dropdown d-flex flex-column align-items-center justify-content-center">
                                 <a id="navbarDropdown" class="dropdown-toggle btn btn-light" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -98,7 +98,9 @@
                         @endguest
                     </ul>
                 </div>
+
             </div>
+
         </nav>
 
         <main class="">

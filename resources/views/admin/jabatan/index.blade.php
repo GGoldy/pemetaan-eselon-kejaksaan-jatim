@@ -15,11 +15,11 @@
     <div class="d-flex justify-content-end m-4">
         <a class="btn btn-dark" href="{{ route('jabatans.deleteMultiple') }}">Delete Multiple</a>
     </div>
-    <div class="container tabres">
-        <div class="row">
-            <div class="table-responsive border p-3 rounded-3 m-4">
-                <table class="table table-bordered table-hover table-striped mb-0 bg-white display nowrap" cellspacing="0"
-                    id="jabatanTable">
+    <div class="container d-flex align-items-center justify-content-center ">
+        <div class="row tabres">
+            <div class="table-responsive border p-3 rounded-3 ">
+                <table class="table table-bordered table-hover table-striped mb-0 bg-white display responsive "
+                    width="100%" id="jabatanTable">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -34,7 +34,7 @@
                                 <td>{{ $jabatan->nama_jabatan }}</td>
 
                                 <td>
-                                    <div class="d-flex justify-content-start">
+                                    <div class="d-flex justify-content-center align-items-center h-100">
                                         <div>
                                             <a type="submit" href="{{ route('jabatans.edit', $jabatan->id) }}"
                                                 class="btn btn-outline-dark btn-sm me-2"><i
@@ -66,7 +66,16 @@
     <script>
         $(document).ready(function() {
             $('#jabatanTable').DataTable({
-                responsive: true
+                responsive: true,
+                columnDefs: [{
+                        responsivePriority: 1,
+                        targets: 1
+                    },
+                    {
+                        responsivePriority: 2,
+                        targets: -1
+                    }
+                ]
             });
         });
 

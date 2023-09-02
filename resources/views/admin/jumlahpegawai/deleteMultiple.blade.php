@@ -27,52 +27,68 @@
             <button type="submit" class="btn btn-danger" onclick="submitDeleteForm('deleteForm')">Delete Selected</button>
         </form>
     </div>
-    <div class="table-responsive border p-3 rounded-3 m-4">
-        <table class="table table-bordered table-hover table-striped mb-0 bg-white" id="jumlahTable">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Satuan Kerja</th>
-                    <th>Jabatan</th>
-                    <th>Jumlah Pegawai</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @php
-                    $index = 1;
-                @endphp
-                @foreach ($satkers as $satker)
-                    @foreach ($satker->jabatans as $jabatan)
+    <div class="container d-flex align-items-center justify-content-center ">
+        <div class="row tabres">
+            <div class="table-responsive border p-3 rounded-3 m-4">
+                <table class="table table-bordered table-hover table-striped mb-0 bg-white display responsive"
+                    width="100%" id="jumlahTable">
+                    <thead>
                         <tr>
-                            <td>{{ $index }}</td>
+                            <th>No</th>
+                            <th>Satuan Kerja</th>
+                            <th>Jabatan</th>
+                            <th>Jumlah Pegawai</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php
+                            $index = 1;
+                        @endphp
+                        @foreach ($satkers as $satker)
+                            @foreach ($satker->jabatans as $jabatan)
+                                <tr>
+                                    <td>{{ $index }}</td>
 
-                            <td>{{ $satker->nama }}</td>
-                            <td>{{ $jabatan->nama_jabatan }}</td>
-                            <td>{{ $jabatan->pivot->jumlah }}</td>
+                                    <td>{{ $satker->nama }}</td>
+                                    <td>{{ $jabatan->nama_jabatan }}</td>
+                                    <td>{{ $jabatan->pivot->jumlah }}</td>
 
-                            <td>
-                                <div class="d-flex justify-content-center">
-                                    <div>
-                                        <input type="checkbox" name="selected_ids[]" value="{{ $jabatan->pivot->id }}">
-                                    </div>
-                                </div>
-                            </td>
-                            @php
-                                $index += 1;
-                            @endphp
-                    @endforeach
-
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+                                    <td>
+                                        <div class="d-flex justify-content-center">
+                                            <div>
+                                                <input type="checkbox" name="selected_ids[]"
+                                                    value="{{ $jabatan->pivot->id }}">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    @php
+                                        $index += 1;
+                                    @endphp
+                            @endforeach
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 @endsection
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $('#jumlahTable').DataTable();
+            $('#jumlahTable').DataTable({
+                responsive: true,
+                columnDefs: [{
+                        responsivePriority: 1,
+                        targets: 1
+                    },
+                    {
+                        responsivePriority: 2,
+                        targets: -1
+                    }
+                ]
+            });
         });
 
         function submitDeleteForm(formId) {

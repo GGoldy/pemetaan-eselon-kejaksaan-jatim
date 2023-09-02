@@ -47,21 +47,6 @@
                 src="{{ Vite::asset('resources/images/logokejaksaan.png') }}" alt="" style="height:40px;">
             <b>Pemetaan Satuan Kerja Kejaksaan Tinggi Jawa Timur</b>
         </a>
-
-        <!-- ... navigation menu ... -->
-        <!-- Navbar Dropdown -->
-        <div class="dropdown ms-auto me-3 me-lg-4">
-            <a class="dropdown-item text-danger" href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
-                <i class="bi bi-box-arrow-in-left"></i>
-                {{ __('Logout') }}
-            </a>
-
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
-        </div>
     </nav>
 
 
@@ -98,6 +83,17 @@
                             <div class="sb-nav-link-icon"><i class="bi bi-arrow-up-right-circle"></i></div>
                             Beranda Pengunjung
                         </a>
+                        <div class="sb-sidenav-menu-heading">Logout</div>
+                        <a class="nav-link dropdown-item text-danger" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                            <i class="bi bi-box-arrow-in-left me-1"></i>
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
