@@ -11,13 +11,36 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 80vh;
+            position: relative;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            height: 83vh;
             width: 100%;
         }
 
         #map {
             width: 100%;
             height: 100%;
+        }
+
+        footer {
+            height: 10vh;
+        }
+
+        /* styling map popup */
+        @media (max-width:576px) {
+            .popupStyle {
+                width: 90vw;
+            }
+        }
+
+        @media (min-width:576px) and (max-width:1700px) {
+            .popupStyle {
+                width: 60vw;
+            }
         }
     </style>
 @endsection

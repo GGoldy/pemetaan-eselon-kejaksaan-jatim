@@ -42,9 +42,9 @@
 
 
                             {{-- remember me section --}}
-                            <div class="form-check d-flex justify-content-center mb-3">
-                                <input class="form-check-input me-2" type="checkbox" name="remember" id="remember"
-                                    {{ old('remember') ? 'checked' : '' }}>
+                            <div class="form-check d-flex justify-content-center align-items-center mb-3">
+                                <input class="form-check-input me-2" style="font-size:15px; margin:0;" type="checkbox"
+                                    name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                 <label class="form-check-label" for="remember">
                                     {{ __('Ingat Kredensial') }}
                                 </label>

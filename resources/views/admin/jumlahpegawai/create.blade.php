@@ -19,7 +19,7 @@
                                 @foreach ($satkers as $satker)
                                     <option value="{{ $satker->id }}"
                                         {{ old('satker') == $satker->id ? 'selected' : '' }}>
-                                        {{ $satker->id . ' - ' . $satker->nama }}</option>
+                                        {{ $satker->nama }}</option>
                                 @endforeach
                             </select>
                             @error('satker')
@@ -90,7 +90,7 @@
 
             jabatanDropdown.empty();
             $.each(filteredJabatans, function(index, filteredJabatan) {
-                var option = new Option(`${filteredJabatan.id} - ${filteredJabatan.nama_jabatan}`, filteredJabatan
+                var option = new Option(`${filteredJabatan.nama_jabatan}`, filteredJabatan
                     .id);
 
                 // Append the option to the select element with the id "your-select-id"

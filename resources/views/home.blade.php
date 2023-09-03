@@ -11,7 +11,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 80vh;
+            height: 78vh;
             position: relative;
             top: 0;
             left: 0;
@@ -25,10 +25,24 @@
             height: 100%;
         }
 
-        @media (max-width: 770px) {
-            * {
-                font-size: 2vw;
+        footer {
+            height: 10vh;
+        }
 
+        nav {
+            height: 12vh
+        }
+
+        /* styling map popup */
+        @media (max-width:576px) {
+            .popupStyle {
+                width: 90vw;
+            }
+        }
+
+        @media (min-width:576px) and (max-width:1700px) {
+            .popupStyle {
+                width: 60vw;
             }
         }
     </style>

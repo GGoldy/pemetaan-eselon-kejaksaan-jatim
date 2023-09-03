@@ -24,6 +24,15 @@
     <!-- Scripts Vite -->
     @vite(['resources/sass/app.scss', 'resources/css/app.css'])
 
+    {{-- Internal style layout admin --}}
+    <style>
+        @media (max-width: 576px) {
+            footer div {
+                text-align: center;
+            }
+        }
+    </style>
+
     <!-- for datatables ajax googleapis-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
@@ -43,10 +52,14 @@
         <button class="btn btn-link btn-sm order-0 order-lg-0 mx-1 px-4 me-lg-0" id="sidebarToggle"><i
                 class="bi bi-list fs-3"></i></button>
         <!-- Navbar Brand -->
-        <a class="navbar-brand px-3" href="{{ route('admin') }}"><img class="me-1"
-                src="{{ Vite::asset('resources/images/logokejaksaan.png') }}" alt="" style="height:40px;">
-            <b>Pemetaan Satuan Kerja Kejaksaan Tinggi Jawa Timur</b>
-        </a>
+        <div class="d-flex align-items-center navbar-brand" style="width:93%;">
+            <a href="{{ route('admin') }}"><img src="{{ Vite::asset('resources/images/logokejaksaan.png') }}"
+                    alt="" style="height:40px;">
+            </a>
+            <a href="{{ route('admin') }}" class="text-decoration-none text-light">
+                <b class="text-wrap text-center">Pemetaan Satuan Kerja Kejaksaan Tinggi Jawa Timur</b>
+            </a>
+        </div>
     </nav>
 
 

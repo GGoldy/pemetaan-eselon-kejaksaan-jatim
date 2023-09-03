@@ -86,6 +86,10 @@
                     {
                         responsivePriority: 2,
                         targets: -1
+                    },
+                    {
+                        responsivePriority: 3,
+                        targets: 3
                     }
                 ]
             });

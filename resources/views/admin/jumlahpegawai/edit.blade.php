@@ -28,7 +28,7 @@
                                 @endphp
                                 @foreach ($satkers as $satker)
                                     <option value="{{ $satker->id }}" {{ $selected == $satker->id ? 'selected' : '' }}>
-                                        {{ $satker->id . '-' . $satker->nama }}
+                                        {{ $satker->nama }}
                                     </option>
                                 @endforeach
                             </select>
@@ -50,7 +50,7 @@
                                 @endphp
                                 @foreach ($jabatans as $jabatan)
                                     <option value="{{ $jabatan->id }}" {{ $selected == $jabatan->id ? 'selected' : '' }}>
-                                        {{ $jabatan->id . '-' . $jabatan->nama_jabatan }}
+                                        {{ $jabatan->nama_jabatan }}
                                     </option>
                                 @endforeach
                             </select>

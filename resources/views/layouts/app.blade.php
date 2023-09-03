@@ -22,8 +22,17 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <!-- Scripts -->
+    <!-- Import vite JS, SCSS, and CSS -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    {{-- Styling CSS Internal --}}
+    <style>
+        @media (max-width: 768px) {
+            * {
+                font-size: 2vw;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -60,7 +69,7 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item d-flex justify-content-center">
-                                    <a id="anchorLogin" class="btn btn-light"
+                                    <a id="anchorLogin" class="btn btn-light text-nowrap"
                                         href="{{ route('login') }}">{{ __('Login Admin') }}</a>
                                 </li>
                             @endif
@@ -108,25 +117,6 @@
         </main>
         @include('layouts.footer')
     </div>
-    <script>
-        // hide login link while below 768px width viewport
-        function checkViewportWidth() {
-            var element = document.getElementById("anchorLogin");
-            console.log("Viewport width: " + window.innerWidth);
-            if (window.innerWidth < 768) {
-                // adding class to the element with anchorLogin id to add class d-none since this project use bootstrap so the style must be done via class because bootstrap value will be the priorities than pure css value
-                element.classList.add("d-none");
-            } else {
-                element.classList.remove("d-none") // Or any other desired display value
-            }
-        }
-
-        // Initial check when the page loads
-        checkViewportWidth();
-
-        // Attach an event listener to check whenever the viewport is resized
-        window.addEventListener("resize", checkViewportWidth);
-    </script>
 </body>
 
 </html>

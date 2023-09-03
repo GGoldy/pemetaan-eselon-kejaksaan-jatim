@@ -48,8 +48,10 @@
         var altitude = Number(parts[1]);
 
         // popup responsive for then put in bindPopup
-        var popup = L.responsivePopup().setContent(
-            ` <h5> ${satker.nama} </h5><br>
+        var popup = L.responsivePopup({
+            offset: [10, 10]
+        }).setContent(
+            `<div> <h5> ${satker.nama} </h5><br>
                 <h6>Daftar Pegawai : </h6>
                 <table class='table table-hover table-bordered'>
                   <tr>
@@ -59,16 +61,16 @@
 
                   ${satker.jabatans.map(jabatan => `<tr><td>${jabatan.nama_jabatan}</td><td>${jabatan.pivot.jumlah}</td></tr>`).join('')}
 
-                    </table>`);
-
+                    </table></div>`);
         var marker = L.marker([longitude, altitude], {
                 title: (satker.nama),
             })
             .addTo(map)
             .bindPopup(
                 popup, {
-                    maxWidth: 325,
-                    maxHeight: 175
+                    className: 'popupStyle',
+                    maxHeight: 400,
+                    maxWidth: 1000,
                 }
             )
         markers.push(marker)
