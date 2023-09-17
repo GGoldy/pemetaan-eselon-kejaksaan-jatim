@@ -4,16 +4,4 @@
             Tinggi Jawa
             Timur</span>
     </div>
-
-    <ul class="nav col-12 col-sm-4 justify-content-center justify-content-sm-end  list-unstyled d-flex pe-3">
-        <li class=""><a class="text-muted" href="https://kejati-jatim.go.id/" target="blank"><i
-                    class="bi bi-dribbble fs-3"></i></a>
-        </li>
-        <li class="ms-3"><a class="text-muted" href="https://www.instagram.com/kejatijatim/?hl=en" target="blank"><i
-                    class="bi bi-instagram fs-3"></i></a>
-        </li>
-        <li class="ms-3"><a class="text-muted" href="https://www.facebook.com/KejatiJatim/" target="blank"><i
-                    class="bi bi-facebook fs-3"></i></a>
-        </li>
-    </ul>
 </footer>

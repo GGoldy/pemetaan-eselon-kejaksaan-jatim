@@ -30,6 +30,10 @@
             height: 10vh;
         }
 
+        .leaflet-popup-tip {
+            display: none;
+        }
+
         /* styling map popup */
         @media (max-width:576px) {
             .popupStyle {

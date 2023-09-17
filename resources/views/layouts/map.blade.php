@@ -100,7 +100,9 @@
             var longitude = Number(parts[0]);
             var altitude = Number(parts[1]);
 
-            var popup = L.responsivePopup().setContent(
+            var popup = L.responsivePopup({
+                offset: [10, 10]
+            }).setContent(
                 ` <h5> ${satker.nama} </h5><br>
                 <h6>Daftar Pegawai : </h6>
                 <table class='table table-hover table-bordered'>
@@ -113,22 +115,19 @@
 
                     </table>`);
 
-            var marker = L.marker([longitude, altitude])
+            var marker = L.marker([longitude, altitude], {
+                    title: (satker.nama),
+                })
                 .addTo(map)
                 .bindPopup(
                     popup, {
-                        maxWidth: 325,
-                        maxHeight: 175
+                        className: 'popupStyle',
+                        maxHeight: 400,
+                        maxWidth: 1000,
                     }
                 )
             markers.push(marker);
-            console.log(markers.length);
-            if (markers.length <= 1) {
-                marker.openPopup();
-            }
         });
-
-
 
         // You can now use the filteredSatkers array as needed, for example, to display on the map
         console.log(filteredSatkers);
