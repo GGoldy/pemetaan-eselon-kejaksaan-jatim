@@ -30,10 +30,8 @@
             height: 10vh;
         }
 
-<<<<<<< HEAD
-=======
+
         /* delete display of triangle while showing popup in map */
->>>>>>> 6635b74 (minor changes in footer and popup point in map styling)
         .leaflet-popup-tip {
             display: none;
         }

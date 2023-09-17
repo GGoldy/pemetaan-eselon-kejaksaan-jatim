@@ -1,3 +1,6 @@
+@php
+    $pageTitle = 'Halaman Login';
+@endphp
 @extends('layouts.app')
 
 @section('content')
@@ -51,9 +54,12 @@
                             </div>
 
                             {{-- login button section --}}
-                            <button type="submit" class="btn btn-primary form-control">
+                            <button type="submit" class="btn btn-primary form-control mb-3">
                                 {{ __('Login') }}
                             </button>
+                            <a href="{{ route('home') }}" class="btn btn-outline-primary form-control"><i
+                                    class="bi bi-map me-2"></i><b>Kembali Ke
+                                    Peta</b></a>
                             {{-- @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}

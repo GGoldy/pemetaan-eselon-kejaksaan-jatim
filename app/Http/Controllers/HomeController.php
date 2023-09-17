@@ -22,9 +22,4 @@ class HomeController extends Controller
 
         return view('home', ['pageTitle' => $pageTitle], ['satkers' => $satkersWithJabatans]);
     }
-
-    public function howto()
-    {
-        $pageTitle = 'Cara Penggunaan';
-    }
 }
