@@ -1,0 +1,998 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Sep 21, 2023 at 02:32 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `kejati_jatim`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jabatans`
+--
+
+CREATE TABLE `jabatans` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama_jabatan` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `jabatans`
+--
+
+INSERT INTO `jabatans` (`id`, `nama_jabatan`, `created_at`, `updated_at`) VALUES
+(1, 'JAKSA FUNGSIONAL KEJAKSAAN NEGERI', NULL, NULL),
+(2, 'OPERATOR PENGEMBANGAN SARANA IPTEK KEJAKSAAN NEGERI', NULL, NULL),
+(3, 'BENDAHARA KEJAKSAAN NEGERI', NULL, NULL),
+(4, 'PENGADMINISTRASI PENANGANAN PERKARA KEJAKSAAN NEGERI', NULL, NULL),
+(5, 'PENGOLAH DATA INTELIJEN KEJAKSAAN NEGERI', NULL, NULL),
+(6, 'FUNGSIONAL ANALIS SDM APARATUR AHLI PERTAMA KEJAKSAAN NEGERI', NULL, NULL),
+(7, 'PENGAWAL TAHANAN/NARAPIDANA KEJAKSAAN NEGERI', NULL, NULL),
+(8, 'PENGOLAH DATA PERKARA DAN PUTUSAN KEJAKSAAN NEGERI', NULL, NULL),
+(9, 'FUNGSIONAL PRANATA KOMPUTER PERTAMA KEJAKSAAN NEGERI', NULL, NULL),
+(10, 'FUNGSIONAL ARSIPARIS PERTAMA KEJAKSAAN NEGERI', NULL, NULL),
+(11, 'ANALIS KEAMANAN KEJAKSAAN NEGERI', NULL, NULL),
+(12, 'PENGELOLA KEPEGAWAIAN KEJAKSAAN NEGERI', NULL, NULL),
+(13, 'PENGADMINISTRASI DATA PENYAJIAN DAN PUBLIKASI KEJAKSAAN NEGERI', NULL, NULL),
+(14, 'PRANATA BARANG BUKTI KEJAKSAAN NEGERI', NULL, NULL),
+(15, 'PENGEMUDI KEJAKSAAN NEGERI', NULL, NULL),
+(16, 'PENYUSUN RENCANA KEGIATAN DAN ANGGARAN KEJAKSAAN NEGERI', NULL, NULL),
+(17, 'ANALIS PENUNTUTAN KEJAKSAAN NEGERI', NULL, NULL),
+(18, 'ANALIS FORENSIK DIGITAL KEJAKSAAN NEGERI', NULL, NULL),
+(19, 'PENGOLAH DAFTAR GAJI KEJAKSAAN NEGERI', NULL, NULL),
+(20, 'ANALIS SISTEM INFORMASI', NULL, NULL),
+(21, 'SEKRETARIS KEJAKSAAN NEGERI', NULL, NULL),
+(22, 'PENYUSUN LAPORAN KEUANGAN KEJAKSAAN NEGERI', NULL, NULL),
+(23, 'PENGAWAL KHUSUS KEJAKSAAN NEGERI', NULL, NULL),
+(24, 'PENYUSUN NASKAH KEJAKSAAN NEGERI', NULL, NULL),
+(25, 'PETUGAS PENGGANDAAN KEJAKSAAN NEGERI', NULL, NULL),
+(26, 'PENGOLAH DATA SISTEM DAN JARINGAN KEJAKSAAN NEGERI', NULL, NULL),
+(27, 'PETUGAS TEKNOLOGI INFORMASI KOMPUTER KEJAKSAAN NEGERI', NULL, NULL),
+(28, 'PENGELOLA SISTEM INFORMASI MANAJEMEN KEPEGAWAIN KEJAKSAAN NEGERI', NULL, NULL),
+(29, 'PENGELOLA SISTEM DAN JARINGAN KEJAKSAAN NEGERI', NULL, NULL),
+(30, 'PENGADMINISTRASI KEPEGAWAIAN KEJAKSAAN NEGERI', NULL, NULL),
+(31, 'PENGOLAH DATA ADMINISTRASI PEMERIKSAAN KEJAKSAAN NEGERI', NULL, NULL),
+(32, 'PENYUSUN KEBUTUHAN BARANG INVENTARIS KEJAKSAAN NEGERI', NULL, NULL),
+(33, 'PENGELOLA SARANA DAN PRASARANA KANTOR KEJAKSAAN NEGERI', NULL, NULL),
+(34, 'PENYUSUN BAHAN INFORMASI DAN PUBLIKASI KEJAKSAAN NEGERI', NULL, NULL),
+(35, 'FUNGSIONAL ANALIS PENGELOLAAN KEUANGAN ANGGARAN PENDAPATAN DAN BELANJA NEGARA MUDA KEJAKSAAN NEGERI', NULL, NULL),
+(36, 'FUNGSIONAL AUDITOR PERTAMA KEJAKSAAN NEGERI', NULL, NULL),
+(37, 'PENGEMUDI PENGAWAL TAHANAN KEJAKSAAN NEGERI', NULL, NULL),
+(38, 'FUNGSIONAL ANALIS PENGELOLAAN KEUANGAN ANGGARAN PENDAPATAN DAN BELANJA NEGARA PERTAMA KEJAKSAAN NEGERI', NULL, NULL),
+(39, 'FUNGSIONAL PRANATA KEUANGAN ANGGARAN PENDAPATAN DAN BELANJA NEGARA KEJAKSAAN NEGERI', NULL, NULL),
+(40, 'PENGELOLA BARANG MILIK NEGARA KEJAKSAAN NEGERI', NULL, NULL),
+(41, 'PENGOLAH BAHAN INFORMASI DAN PUBLIKASI KEJAKSAAN NEGERI', NULL, NULL),
+(42, 'PENGELOLA TATA NASKAH KEJAKSAAN NEGERI', NULL, NULL),
+(43, 'PENGELOLA PENGADUAN PUBLIK KEJAKSAAN NEGERI', NULL, NULL),
+(44, 'JAKSA FUNGSIONAL PENGELOLAAN BARANG BUKTI DAN BARANG RAMPASAN', NULL, NULL),
+(45, 'ANALIS SISTEM INFORMASI KEJAKSAAN NEGERI', NULL, NULL),
+(46, 'ANALIS PERMASALAHAN HUKUM KEJAKSAAN NEGERI', NULL, NULL),
+(47, 'FUNGSIONAL PENGELOLA PENGADAAN BARANG/JASA PERTAMA KEJAKSAAN NEGERI', NULL, NULL),
+(48, 'PENGELOLA GAJI KEJAKSAAN NEGERI', NULL, NULL),
+(49, 'PENYUSUN LAPORAN KEUANGAN PEMBINAAN', NULL, NULL),
+(50, 'FUNGSIONAL ANALIS PENGELOLAAN KEUANGAN ANGGARAN PENDAPATAN DAN BELANJA NEGARA KEJAKSAAN NEGERI', NULL, NULL),
+(51, 'PENGOLAH DATA MONITORING DAN EVALUASI PELAKSANA ANGGARAN KEJAKSAAN NEGERI', NULL, NULL),
+(52, 'PENGADMINISTRASI KEUANGAN KEJAKSAAN NEGERI', NULL, NULL),
+(53, 'PENGELOLA KEUANGAN KEJAKSAAN NEGERI', NULL, NULL),
+(54, 'PENGOLAH DATA ADMINISTRASI PEMERIKSAAN TINDAK PIDANA KHUSUS', NULL, NULL),
+(55, 'PENYUSUN BAHAN BANTUAN HUKUM KEJAKSAAN NEGERI', NULL, NULL),
+(56, 'ANALIS PENYULUHAN DAN LAYANAN INFORMASI KEJAKSAAN NEGERI', NULL, NULL),
+(57, 'FUNGSIONAL PRANATA HUBUNGAN MASYARAKAT PERTAMA KEJAKSAAN NEGERI', NULL, NULL),
+(58, 'FUNGSIONAL SANDIMAN PELAKSANA INTELIJEN', NULL, NULL),
+(59, 'PENGELOLA KEPEGAWAIAN PEMBINAAN', NULL, NULL),
+(60, 'JAKSA FUNGSIONAL TINDAK PIDANA UMUM', NULL, NULL),
+(61, 'PENYIAP BAHAN ADMINISTRASI PENANGANAN PERKARA KEJAKSAAN NEGERI', NULL, NULL),
+(62, 'JAKSA FUNGSIONAL INTELIJEN', NULL, NULL),
+(63, 'ANALIS PELAYANAN PUBLIK KEJAKSAAN NEGERI', NULL, NULL),
+(64, 'FUNGSIONAL PRANATA KEUANGAN ANGGARAN PENDAPATAN DAN BELANJA NEGARA TERAMPIL KEJAKSAAN NEGERI', NULL, NULL),
+(65, 'JAKSA FUNGSIONAL TINDAK PIDANA KHUSUS KEJAKSAAN NEGERI', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jumlahs`
+--
+
+CREATE TABLE `jumlahs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `satker_id` bigint(20) UNSIGNED NOT NULL,
+  `jabatan_id` bigint(20) UNSIGNED NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `jumlahs`
+--
+
+INSERT INTO `jumlahs` (`id`, `satker_id`, `jabatan_id`, `jumlah`, `created_at`, `updated_at`) VALUES
+(1, 2, 1, 31, NULL, NULL),
+(2, 2, 2, 2, NULL, NULL),
+(3, 2, 3, 1, NULL, NULL),
+(4, 2, 4, 4, NULL, NULL),
+(5, 2, 5, 2, NULL, NULL),
+(6, 2, 6, 1, NULL, NULL),
+(7, 2, 7, 4, NULL, NULL),
+(8, 2, 8, 2, NULL, NULL),
+(9, 2, 9, 2, NULL, NULL),
+(10, 2, 10, 1, NULL, NULL),
+(11, 2, 11, 1, NULL, NULL),
+(12, 2, 12, 1, NULL, NULL),
+(13, 2, 13, 1, NULL, NULL),
+(14, 2, 14, 3, NULL, NULL),
+(15, 2, 15, 1, NULL, NULL),
+(16, 2, 16, 1, NULL, NULL),
+(17, 2, 19, 1, NULL, NULL),
+(18, 2, 17, 2, NULL, NULL),
+(19, 2, 18, 1, NULL, NULL),
+(20, 2, 42, 1, NULL, NULL),
+(21, 2, 37, 4, NULL, NULL),
+(22, 2, 60, 1, NULL, NULL),
+(23, 2, 20, 1, NULL, NULL),
+(24, 2, 43, 1, NULL, NULL),
+(25, 3, 1, 30, NULL, NULL),
+(26, 3, 21, 2, NULL, NULL),
+(27, 3, 22, 2, NULL, NULL),
+(28, 3, 29, 1, NULL, NULL),
+(29, 3, 4, 7, NULL, NULL),
+(30, 3, 34, 1, NULL, NULL),
+(31, 3, 7, 4, NULL, NULL),
+(32, 3, 38, 1, NULL, NULL),
+(33, 3, 6, 1, NULL, NULL),
+(34, 3, 5, 4, NULL, NULL),
+(35, 3, 9, 1, NULL, NULL),
+(36, 3, 42, 2, NULL, NULL),
+(37, 3, 36, 1, NULL, NULL),
+(38, 3, 3, 2, NULL, NULL),
+(39, 3, 23, 1, NULL, NULL),
+(40, 3, 24, 1, NULL, NULL),
+(41, 3, 13, 1, NULL, NULL),
+(42, 3, 45, 1, NULL, NULL),
+(43, 3, 8, 1, NULL, NULL),
+(44, 3, 43, 1, NULL, NULL),
+(45, 3, 14, 1, NULL, NULL),
+(46, 3, 40, 1, NULL, NULL),
+(47, 3, 37, 3, NULL, NULL),
+(48, 3, 18, 1, NULL, NULL),
+(49, 4, 1, 16, NULL, NULL),
+(50, 4, 5, 2, NULL, NULL),
+(51, 4, 32, 1, NULL, NULL),
+(52, 4, 2, 1, NULL, NULL),
+(53, 4, 9, 2, NULL, NULL),
+(54, 4, 4, 4, NULL, NULL),
+(55, 4, 7, 3, NULL, NULL),
+(56, 4, 25, 1, NULL, NULL),
+(57, 4, 40, 1, NULL, NULL),
+(58, 4, 11, 1, NULL, NULL),
+(59, 4, 17, 1, NULL, NULL),
+(60, 4, 18, 1, NULL, NULL),
+(61, 4, 14, 1, NULL, NULL),
+(62, 4, 8, 1, NULL, NULL),
+(63, 4, 43, 1, NULL, NULL),
+(64, 4, 3, 1, NULL, NULL),
+(65, 4, 37, 2, NULL, NULL),
+(66, 4, 20, 1, NULL, NULL),
+(67, 5, 1, 22, NULL, NULL),
+(68, 5, 19, 1, NULL, NULL),
+(69, 5, 28, 1, NULL, NULL),
+(70, 5, 29, 1, NULL, NULL),
+(71, 5, 39, 1, NULL, NULL),
+(72, 5, 6, 1, NULL, NULL),
+(73, 5, 9, 3, NULL, NULL),
+(74, 5, 36, 1, NULL, NULL),
+(75, 5, 22, 1, NULL, NULL),
+(76, 5, 2, 2, NULL, NULL),
+(77, 5, 7, 5, NULL, NULL),
+(78, 5, 17, 1, NULL, NULL),
+(79, 5, 14, 2, NULL, NULL),
+(80, 5, 18, 1, NULL, NULL),
+(81, 5, 5, 1, NULL, NULL),
+(82, 5, 8, 1, NULL, NULL),
+(83, 5, 43, 1, NULL, NULL),
+(84, 5, 37, 2, NULL, NULL),
+(85, 5, 2, 1, NULL, NULL),
+(86, 6, 1, 16, NULL, NULL),
+(87, 6, 28, 2, NULL, NULL),
+(88, 6, 7, 4, NULL, NULL),
+(89, 6, 12, 3, NULL, NULL),
+(90, 6, 5, 2, NULL, NULL),
+(91, 6, 4, 3, NULL, NULL),
+(92, 6, 30, 1, NULL, NULL),
+(93, 6, 31, 2, NULL, NULL),
+(94, 6, 36, 1, NULL, NULL),
+(95, 6, 9, 3, NULL, NULL),
+(96, 6, 14, 2, NULL, NULL),
+(97, 6, 22, 1, NULL, NULL),
+(98, 6, 17, 2, NULL, NULL),
+(99, 6, 27, 2, NULL, NULL),
+(100, 6, 18, 1, NULL, NULL),
+(101, 6, 3, 1, NULL, NULL),
+(102, 6, 40, 1, NULL, NULL),
+(103, 6, 8, 1, NULL, NULL),
+(104, 6, 43, 1, NULL, NULL),
+(105, 6, 37, 2, NULL, NULL),
+(106, 7, 1, 10, NULL, NULL),
+(107, 7, 34, 1, NULL, NULL),
+(108, 7, 5, 2, NULL, NULL),
+(109, 7, 4, 1, NULL, NULL),
+(110, 7, 6, 1, NULL, NULL),
+(111, 7, 3, 2, NULL, NULL),
+(112, 7, 9, 1, NULL, NULL),
+(113, 7, 18, 1, NULL, NULL),
+(114, 7, 42, 1, NULL, NULL),
+(115, 7, 14, 1, NULL, NULL),
+(116, 7, 8, 1, NULL, NULL),
+(117, 7, 43, 1, NULL, NULL),
+(118, 7, 7, 2, NULL, NULL),
+(119, 7, 37, 2, NULL, NULL),
+(120, 8, 1, 13, NULL, NULL),
+(121, 8, 2, 1, NULL, NULL),
+(122, 8, 5, 2, NULL, NULL),
+(123, 8, 7, 6, NULL, NULL),
+(124, 8, 4, 4, NULL, NULL),
+(125, 8, 10, 1, NULL, NULL),
+(126, 8, 36, 1, NULL, NULL),
+(127, 8, 6, 1, NULL, NULL),
+(128, 8, 16, 1, NULL, NULL),
+(129, 8, 3, 1, NULL, NULL),
+(130, 8, 61, 1, NULL, NULL),
+(131, 8, 22, 1, NULL, NULL),
+(132, 8, 15, 5, NULL, NULL),
+(133, 8, 9, 1, NULL, NULL),
+(134, 8, 17, 1, NULL, NULL),
+(135, 8, 12, 1, NULL, NULL),
+(136, 8, 24, 1, NULL, NULL),
+(137, 8, 18, 1, NULL, NULL),
+(138, 8, 64, 1, NULL, NULL),
+(139, 8, 14, 3, NULL, NULL),
+(140, 8, 43, 1, NULL, NULL),
+(141, 8, 37, 1, NULL, NULL),
+(142, 8, 65, 2, NULL, NULL),
+(143, 9, 1, 4, NULL, NULL),
+(144, 9, 4, 1, NULL, NULL),
+(145, 9, 5, 2, NULL, NULL),
+(146, 9, 6, 1, NULL, NULL),
+(147, 9, 32, 1, NULL, NULL),
+(148, 9, 3, 1, NULL, NULL),
+(149, 9, 9, 1, NULL, NULL),
+(150, 9, 17, 1, NULL, NULL),
+(151, 9, 11, 1, NULL, NULL),
+(152, 9, 18, 1, NULL, NULL),
+(153, 9, 14, 1, NULL, NULL),
+(154, 9, 8, 2, NULL, NULL),
+(155, 9, 43, 1, NULL, NULL),
+(156, 9, 7, 3, NULL, NULL),
+(157, 9, 37, 2, NULL, NULL),
+(158, 10, 1, 10, NULL, NULL),
+(159, 10, 32, 1, NULL, NULL),
+(160, 10, 4, 5, NULL, NULL),
+(161, 10, 33, 1, NULL, NULL),
+(162, 10, 34, 4, NULL, NULL),
+(163, 10, 35, 1, NULL, NULL),
+(164, 10, 9, 2, NULL, NULL),
+(165, 10, 38, 1, NULL, NULL),
+(166, 10, 22, 1, NULL, NULL),
+(167, 10, 7, 4, NULL, NULL),
+(168, 10, 36, 1, NULL, NULL),
+(169, 10, 5, 3, NULL, NULL),
+(170, 10, 14, 3, NULL, NULL),
+(171, 10, 17, 1, NULL, NULL),
+(172, 10, 18, 1, NULL, NULL),
+(173, 10, 3, 3, NULL, NULL),
+(174, 10, 8, 1, NULL, NULL),
+(175, 10, 15, 1, NULL, NULL),
+(176, 10, 37, 2, NULL, NULL),
+(177, 11, 39, 1, NULL, NULL),
+(178, 11, 13, 1, NULL, NULL),
+(179, 11, 17, 1, NULL, NULL),
+(180, 11, 40, 1, NULL, NULL),
+(181, 11, 10, 1, NULL, NULL),
+(182, 11, 3, 1, NULL, NULL),
+(183, 11, 14, 3, NULL, NULL),
+(184, 11, 2, 3, NULL, NULL),
+(185, 11, 22, 1, NULL, NULL),
+(186, 11, 37, 2, NULL, NULL),
+(187, 11, 9, 1, NULL, NULL),
+(188, 11, 18, 1, NULL, NULL),
+(189, 11, 29, 1, NULL, NULL),
+(190, 11, 41, 1, NULL, NULL),
+(191, 11, 42, 1, NULL, NULL),
+(192, 11, 5, 1, NULL, NULL),
+(193, 11, 43, 1, NULL, NULL),
+(194, 11, 8, 1, NULL, NULL),
+(195, 11, 44, 1, NULL, NULL),
+(196, 12, 13, 1, NULL, NULL),
+(197, 12, 4, 1, NULL, NULL),
+(198, 12, 42, 1, NULL, NULL),
+(199, 12, 38, 1, NULL, NULL),
+(200, 12, 36, 1, NULL, NULL),
+(201, 12, 9, 1, NULL, NULL),
+(202, 12, 1, 1, NULL, NULL),
+(203, 12, 19, 1, NULL, NULL),
+(204, 12, 5, 2, NULL, NULL),
+(205, 12, 45, 1, NULL, NULL),
+(206, 12, 34, 1, NULL, NULL),
+(207, 12, 14, 1, NULL, NULL),
+(208, 12, 8, 1, NULL, NULL),
+(209, 12, 39, 1, NULL, NULL),
+(210, 12, 7, 3, NULL, NULL),
+(211, 12, 37, 2, NULL, NULL),
+(212, 13, 1, 2, NULL, NULL),
+(213, 13, 9, 3, NULL, NULL),
+(214, 13, 38, 1, NULL, NULL),
+(215, 13, 36, 1, NULL, NULL),
+(216, 13, 22, 1, NULL, NULL),
+(217, 13, 17, 1, NULL, NULL),
+(218, 13, 5, 1, NULL, NULL),
+(219, 13, 14, 3, NULL, NULL),
+(220, 13, 8, 1, NULL, NULL),
+(221, 13, 7, 4, NULL, NULL),
+(222, 13, 37, 2, NULL, NULL),
+(223, 14, 1, 11, NULL, NULL),
+(224, 14, 5, 2, NULL, NULL),
+(225, 14, 6, 1, NULL, NULL),
+(226, 14, 3, 1, NULL, NULL),
+(227, 14, 12, 2, NULL, NULL),
+(228, 14, 9, 2, NULL, NULL),
+(229, 14, 4, 1, NULL, NULL),
+(230, 14, 14, 3, NULL, NULL),
+(231, 14, 17, 2, NULL, NULL),
+(232, 14, 22, 1, NULL, NULL),
+(233, 14, 18, 1, NULL, NULL),
+(234, 14, 42, 1, NULL, NULL),
+(235, 14, 8, 2, NULL, NULL),
+(236, 14, 43, 1, NULL, NULL),
+(237, 14, 7, 2, NULL, NULL),
+(238, 15, 1, 10, NULL, NULL),
+(239, 15, 15, 1, NULL, NULL),
+(240, 15, 5, 1, NULL, NULL),
+(241, 15, 43, 1, NULL, NULL),
+(242, 15, 7, 2, NULL, NULL),
+(243, 15, 44, 1, NULL, NULL),
+(244, 15, 18, 1, NULL, NULL),
+(245, 16, 1, 4, NULL, NULL),
+(246, 16, 5, 3, NULL, NULL),
+(247, 16, 4, 4, NULL, NULL),
+(248, 16, 2, 1, NULL, NULL),
+(249, 16, 12, 1, NULL, NULL),
+(250, 16, 9, 1, NULL, NULL),
+(251, 16, 17, 1, NULL, NULL),
+(252, 16, 7, 4, NULL, NULL),
+(253, 16, 14, 2, NULL, NULL),
+(254, 16, 15, 1, NULL, NULL),
+(255, 16, 39, 1, NULL, NULL),
+(256, 16, 8, 1, NULL, NULL),
+(257, 16, 37, 2, NULL, NULL),
+(258, 17, 1, 2, NULL, NULL),
+(259, 17, 39, 1, NULL, NULL),
+(260, 17, 8, 4, NULL, NULL),
+(261, 17, 36, 1, NULL, NULL),
+(262, 17, 4, 2, NULL, NULL),
+(263, 17, 12, 1, NULL, NULL),
+(264, 17, 9, 2, NULL, NULL),
+(265, 17, 17, 1, NULL, NULL),
+(266, 17, 42, 1, NULL, NULL),
+(267, 17, 5, 1, NULL, NULL),
+(268, 17, 14, 1, NULL, NULL),
+(269, 17, 7, 4, NULL, NULL),
+(270, 17, 37, 1, NULL, NULL),
+(271, 18, 46, 1, NULL, NULL),
+(272, 18, 12, 2, NULL, NULL),
+(273, 18, 1, 5, NULL, NULL),
+(274, 18, 47, 1, NULL, NULL),
+(275, 18, 9, 3, NULL, NULL),
+(276, 18, 32, 1, NULL, NULL),
+(277, 18, 3, 2, NULL, NULL),
+(278, 18, 7, 4, NULL, NULL),
+(279, 18, 4, 1, NULL, NULL),
+(280, 18, 24, 1, NULL, NULL),
+(281, 18, 36, 1, NULL, NULL),
+(282, 18, 15, 1, NULL, NULL),
+(283, 18, 17, 2, NULL, NULL),
+(284, 18, 14, 3, NULL, NULL),
+(285, 18, 8, 1, NULL, NULL),
+(286, 18, 48, 1, NULL, NULL),
+(287, 18, 42, 1, NULL, NULL),
+(288, 18, 37, 2, NULL, NULL),
+(289, 18, 49, 1, NULL, NULL),
+(290, 18, 5, 1, NULL, NULL),
+(291, 19, 14, 3, NULL, NULL),
+(292, 19, 1, 3, NULL, NULL),
+(293, 19, 9, 3, NULL, NULL),
+(294, 19, 39, 1, NULL, NULL),
+(295, 19, 3, 1, NULL, NULL),
+(296, 19, 17, 2, NULL, NULL),
+(297, 19, 7, 2, NULL, NULL),
+(298, 19, 4, 1, NULL, NULL),
+(299, 19, 5, 1, NULL, NULL),
+(300, 19, 8, 2, NULL, NULL),
+(301, 19, 37, 1, NULL, NULL),
+(302, 20, 1, 3, NULL, NULL),
+(303, 20, 2, 2, NULL, NULL),
+(304, 20, 39, 2, NULL, NULL),
+(305, 20, 7, 4, NULL, NULL),
+(306, 20, 12, 1, NULL, NULL),
+(307, 20, 36, 1, NULL, NULL),
+(308, 20, 31, 1, NULL, NULL),
+(309, 20, 9, 3, NULL, NULL),
+(310, 20, 17, 2, NULL, NULL),
+(311, 20, 38, 1, NULL, NULL),
+(312, 20, 3, 1, NULL, NULL),
+(313, 20, 5, 1, NULL, NULL),
+(314, 20, 14, 1, NULL, NULL),
+(315, 20, 8, 1, NULL, NULL),
+(316, 20, 37, 3, NULL, NULL),
+(317, 21, 1, 3, NULL, NULL),
+(318, 21, 34, 1, NULL, NULL),
+(319, 21, 39, 2, NULL, NULL),
+(320, 21, 50, 1, NULL, NULL),
+(321, 21, 22, 2, NULL, NULL),
+(322, 21, 38, 1, NULL, NULL),
+(323, 21, 15, 1, NULL, NULL),
+(324, 21, 9, 1, NULL, NULL),
+(325, 21, 17, 2, NULL, NULL),
+(326, 21, 14, 2, NULL, NULL),
+(327, 21, 5, 1, NULL, NULL),
+(328, 21, 8, 1, NULL, NULL),
+(329, 21, 3, 1, NULL, NULL),
+(330, 21, 7, 3, NULL, NULL),
+(331, 21, 37, 2, NULL, NULL),
+(332, 22, 1, 2, NULL, NULL),
+(333, 22, 7, 4, NULL, NULL),
+(334, 22, 3, 2, NULL, NULL),
+(335, 22, 9, 1, NULL, NULL),
+(336, 22, 17, 2, NULL, NULL),
+(337, 22, 4, 1, NULL, NULL),
+(338, 22, 15, 1, NULL, NULL),
+(339, 22, 14, 1, NULL, NULL),
+(340, 22, 5, 1, NULL, NULL),
+(341, 22, 8, 1, NULL, NULL),
+(342, 22, 37, 2, NULL, NULL),
+(343, 23, 34, 1, NULL, NULL),
+(344, 23, 1, 3, NULL, NULL),
+(345, 23, 14, 3, NULL, NULL),
+(346, 23, 4, 4, NULL, NULL),
+(347, 23, 47, 1, NULL, NULL),
+(348, 23, 36, 1, NULL, NULL),
+(349, 23, 38, 1, NULL, NULL),
+(350, 23, 39, 1, NULL, NULL),
+(351, 23, 9, 1, NULL, NULL),
+(352, 23, 17, 1, NULL, NULL),
+(353, 23, 3, 1, NULL, NULL),
+(354, 23, 51, 1, NULL, NULL),
+(355, 23, 5, 1, NULL, NULL),
+(356, 23, 7, 3, NULL, NULL),
+(357, 23, 37, 3, NULL, NULL),
+(358, 23, 8, 1, NULL, NULL),
+(359, 24, 1, 3, NULL, NULL),
+(360, 24, 5, 2, NULL, NULL),
+(361, 24, 21, 1, NULL, NULL),
+(362, 24, 42, 1, NULL, NULL),
+(363, 24, 7, 5, NULL, NULL),
+(364, 24, 14, 3, NULL, NULL),
+(365, 24, 4, 2, NULL, NULL),
+(366, 24, 19, 1, NULL, NULL),
+(367, 24, 30, 1, NULL, NULL),
+(368, 24, 3, 1, NULL, NULL),
+(369, 24, 9, 1, NULL, NULL),
+(370, 24, 8, 1, NULL, NULL),
+(371, 24, 52, 1, NULL, NULL),
+(372, 24, 37, 2, NULL, NULL),
+(373, 25, 1, 2, NULL, NULL),
+(374, 25, 5, 2, NULL, NULL),
+(375, 25, 2, 2, NULL, NULL),
+(376, 25, 47, 1, NULL, NULL),
+(377, 25, 34, 1, NULL, NULL),
+(378, 25, 12, 1, NULL, NULL),
+(379, 25, 42, 3, NULL, NULL),
+(380, 25, 53, 1, NULL, NULL),
+(381, 25, 36, 1, NULL, NULL),
+(382, 25, 38, 1, NULL, NULL),
+(383, 25, 3, 2, NULL, NULL),
+(384, 25, 7, 4, NULL, NULL),
+(385, 25, 9, 1, NULL, NULL),
+(386, 25, 17, 1, NULL, NULL),
+(387, 25, 14, 2, NULL, NULL),
+(388, 25, 8, 1, NULL, NULL),
+(389, 25, 37, 1, NULL, NULL),
+(390, 25, 54, 1, NULL, NULL),
+(391, 26, 1, 4, NULL, NULL),
+(392, 26, 34, 1, NULL, NULL),
+(393, 26, 55, 1, NULL, NULL),
+(394, 26, 56, 1, NULL, NULL),
+(395, 26, 4, 5, NULL, NULL),
+(396, 26, 57, 1, NULL, NULL),
+(397, 26, 36, 1, NULL, NULL),
+(398, 26, 9, 3, NULL, NULL),
+(399, 26, 38, 1, NULL, NULL),
+(400, 26, 3, 2, NULL, NULL),
+(401, 26, 19, 1, NULL, NULL),
+(402, 26, 17, 1, NULL, NULL),
+(403, 26, 42, 1, NULL, NULL),
+(404, 26, 5, 1, NULL, NULL),
+(405, 26, 14, 1, NULL, NULL),
+(406, 26, 8, 1, NULL, NULL),
+(407, 26, 7, 3, NULL, NULL),
+(408, 26, 37, 2, NULL, NULL),
+(409, 27, 1, 5, NULL, NULL),
+(410, 27, 4, 2, NULL, NULL),
+(411, 27, 36, 1, NULL, NULL),
+(412, 27, 7, 4, NULL, NULL),
+(413, 27, 5, 3, NULL, NULL),
+(414, 27, 14, 3, NULL, NULL),
+(415, 27, 39, 2, NULL, NULL),
+(416, 27, 9, 2, NULL, NULL),
+(417, 27, 34, 1, NULL, NULL),
+(418, 27, 24, 1, NULL, NULL),
+(419, 27, 8, 2, NULL, NULL),
+(420, 27, 15, 1, NULL, NULL),
+(421, 27, 37, 3, NULL, NULL),
+(422, 28, 1, 3, NULL, NULL),
+(423, 28, 3, 3, NULL, NULL),
+(424, 28, 38, 1, NULL, NULL),
+(425, 28, 4, 1, NULL, NULL),
+(426, 28, 12, 2, NULL, NULL),
+(427, 28, 9, 2, NULL, NULL),
+(428, 28, 7, 5, NULL, NULL),
+(429, 28, 17, 1, NULL, NULL),
+(430, 28, 36, 1, NULL, NULL),
+(431, 28, 27, 1, NULL, NULL),
+(432, 28, 5, 1, NULL, NULL),
+(433, 28, 14, 1, NULL, NULL),
+(434, 28, 8, 1, NULL, NULL),
+(435, 28, 37, 2, NULL, NULL),
+(436, 29, 5, 3, NULL, NULL),
+(437, 29, 1, 4, NULL, NULL),
+(438, 29, 39, 2, NULL, NULL),
+(439, 29, 38, 1, NULL, NULL),
+(440, 29, 4, 2, NULL, NULL),
+(441, 29, 9, 2, NULL, NULL),
+(442, 29, 15, 2, NULL, NULL),
+(443, 29, 14, 2, NULL, NULL),
+(444, 29, 8, 1, NULL, NULL),
+(445, 29, 25, 1, NULL, NULL),
+(446, 29, 7, 2, NULL, NULL),
+(447, 29, 37, 4, NULL, NULL),
+(448, 29, 49, 1, NULL, NULL),
+(449, 30, 1, 5, NULL, NULL),
+(450, 30, 7, 6, NULL, NULL),
+(451, 30, 4, 2, NULL, NULL),
+(452, 30, 3, 1, NULL, NULL),
+(453, 30, 38, 1, NULL, NULL),
+(454, 30, 9, 1, NULL, NULL),
+(455, 30, 14, 3, NULL, NULL),
+(456, 30, 8, 1, NULL, NULL),
+(457, 30, 37, 2, NULL, NULL),
+(458, 30, 58, 1, NULL, NULL),
+(459, 30, 17, 1, NULL, NULL),
+(460, 31, 1, 3, NULL, NULL),
+(461, 31, 22, 1, NULL, NULL),
+(462, 31, 5, 1, NULL, NULL),
+(463, 31, 38, 1, NULL, NULL),
+(464, 31, 3, 2, NULL, NULL),
+(465, 31, 9, 2, NULL, NULL),
+(466, 31, 14, 2, NULL, NULL),
+(467, 31, 17, 1, NULL, NULL),
+(468, 31, 32, 1, NULL, NULL),
+(469, 31, 29, 1, NULL, NULL),
+(470, 31, 8, 1, NULL, NULL),
+(471, 31, 7, 1, NULL, NULL),
+(472, 31, 37, 2, NULL, NULL),
+(473, 32, 16, 1, NULL, NULL),
+(474, 32, 14, 4, NULL, NULL),
+(475, 32, 31, 2, NULL, NULL),
+(476, 32, 5, 1, NULL, NULL),
+(477, 32, 1, 2, NULL, NULL),
+(478, 32, 7, 3, NULL, NULL),
+(479, 32, 4, 1, NULL, NULL),
+(480, 32, 9, 1, NULL, NULL),
+(481, 32, 8, 1, NULL, NULL),
+(482, 32, 37, 2, NULL, NULL),
+(483, 32, 14, 1, NULL, NULL),
+(484, 33, 1, 1, NULL, NULL),
+(485, 33, 9, 2, NULL, NULL),
+(486, 33, 38, 1, NULL, NULL),
+(487, 33, 5, 2, NULL, NULL),
+(488, 33, 14, 2, NULL, NULL),
+(489, 33, 8, 1, NULL, NULL),
+(490, 33, 7, 5, NULL, NULL),
+(491, 33, 37, 1, NULL, NULL),
+(492, 34, 34, 3, NULL, NULL),
+(493, 34, 1, 9, NULL, NULL),
+(494, 34, 7, 9, NULL, NULL),
+(495, 34, 47, 1, NULL, NULL),
+(496, 34, 38, 1, NULL, NULL),
+(497, 34, 2, 1, NULL, NULL),
+(498, 34, 22, 1, NULL, NULL),
+(499, 34, 3, 1, NULL, NULL),
+(500, 34, 32, 1, NULL, NULL),
+(501, 34, 57, 1, NULL, NULL),
+(502, 34, 9, 1, NULL, NULL),
+(503, 34, 17, 1, NULL, NULL),
+(504, 34, 15, 1, NULL, NULL),
+(505, 34, 5, 1, NULL, NULL),
+(506, 34, 8, 1, NULL, NULL),
+(507, 34, 37, 2, NULL, NULL),
+(508, 34, 59, 1, NULL, NULL),
+(509, 34, 60, 1, NULL, NULL),
+(510, 35, 1, 22, NULL, NULL),
+(511, 35, 61, 1, NULL, NULL),
+(512, 35, 9, 3, NULL, NULL),
+(513, 35, 6, 1, NULL, NULL),
+(514, 35, 36, 1, NULL, NULL),
+(515, 35, 2, 2, NULL, NULL),
+(516, 35, 3, 1, NULL, NULL),
+(517, 35, 7, 5, NULL, NULL),
+(518, 35, 18, 1, NULL, NULL),
+(519, 35, 14, 3, NULL, NULL),
+(520, 35, 5, 1, NULL, NULL),
+(521, 35, 8, 1, NULL, NULL),
+(522, 35, 43, 1, NULL, NULL),
+(523, 35, 37, 2, NULL, NULL),
+(524, 35, 62, 1, NULL, NULL),
+(525, 36, 1, 8, NULL, NULL),
+(526, 36, 4, 2, NULL, NULL),
+(527, 36, 57, 1, NULL, NULL),
+(528, 36, 36, 1, NULL, NULL),
+(529, 36, 21, 1, NULL, NULL),
+(530, 36, 9, 1, NULL, NULL),
+(531, 36, 3, 1, NULL, NULL),
+(532, 36, 42, 2, NULL, NULL),
+(533, 36, 14, 2, NULL, NULL),
+(534, 36, 8, 2, NULL, NULL),
+(535, 36, 5, 1, NULL, NULL),
+(536, 36, 7, 4, NULL, NULL),
+(537, 36, 37, 1, NULL, NULL),
+(538, 36, 60, 2, NULL, NULL),
+(539, 37, 2, 1, NULL, NULL),
+(540, 37, 1, 8, NULL, NULL),
+(541, 37, 14, 2, NULL, NULL),
+(542, 37, 50, 1, NULL, NULL),
+(543, 37, 9, 2, NULL, NULL),
+(544, 37, 4, 1, NULL, NULL),
+(545, 37, 38, 1, NULL, NULL),
+(546, 37, 39, 1, NULL, NULL),
+(547, 37, 11, 2, NULL, NULL),
+(548, 37, 63, 1, NULL, NULL),
+(549, 37, 7, 4, NULL, NULL),
+(550, 37, 22, 1, NULL, NULL),
+(551, 37, 5, 1, NULL, NULL),
+(552, 37, 8, 1, NULL, NULL),
+(553, 37, 37, 2, NULL, NULL),
+(554, 38, 1, 2, NULL, NULL),
+(555, 38, 9, 2, NULL, NULL),
+(556, 38, 38, 1, NULL, NULL),
+(557, 38, 7, 3, NULL, NULL),
+(558, 38, 14, 2, NULL, NULL),
+(559, 38, 27, 1, NULL, NULL),
+(560, 38, 15, 1, NULL, NULL),
+(561, 38, 8, 2, NULL, NULL),
+(562, 38, 42, 2, NULL, NULL),
+(563, 38, 5, 1, NULL, NULL),
+(564, 38, 14, 1, NULL, NULL),
+(565, 39, 1, 5, NULL, NULL),
+(566, 39, 12, 1, NULL, NULL),
+(567, 39, 47, 1, NULL, NULL),
+(568, 39, 38, 1, NULL, NULL),
+(569, 39, 7, 9, NULL, NULL),
+(570, 39, 36, 1, NULL, NULL),
+(571, 39, 14, 3, NULL, NULL),
+(572, 39, 9, 1, NULL, NULL),
+(573, 39, 24, 1, NULL, NULL),
+(574, 39, 8, 1, NULL, NULL),
+(575, 39, 4, 1, NULL, NULL),
+(576, 39, 3, 2, NULL, NULL),
+(577, 39, 37, 1, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_reset_tokens_table', 1),
+(3, '2014_10_12_100000_create_password_resets_table', 1),
+(4, '2019_08_19_000000_create_failed_jobs_table', 1),
+(5, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(6, '2023_08_15_023000_create_jabatans_table', 1),
+(7, '2023_08_17_115147_create_satkers_table', 1),
+(8, '2023_08_17_124022_create_jumlahs_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_reset_tokens`
+--
+
+CREATE TABLE `password_reset_tokens` (
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `personal_access_tokens`
+--
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `expires_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `satkers`
+--
+
+CREATE TABLE `satkers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `longalt` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `satkers`
+--
+
+INSERT INTO `satkers` (`id`, `nama`, `longalt`, `created_at`, `updated_at`) VALUES
+(1, 'Kejati Jatim', '-7.314065983225793, 112.73336023051055', NULL, '2023-08-26 09:25:35'),
+(2, 'Kejari Surabaya', '-7.269302485173192, 112.6952329510823', NULL, NULL),
+(3, 'Kejari Kota Malang', '-7.931937499265678, 112.65108345294318', NULL, NULL),
+(4, 'Kejari Jember', '-8.17118611306869, 113.72167268178282', NULL, NULL),
+(5, 'Kejari Kota Kediri', '-7.809268646890756, 112.0051460468522', NULL, NULL),
+(6, 'Kejari Kota Madiun', '-7.619451914921224, 111.52124102225181', NULL, NULL),
+(7, 'Kejari Kota Pasuruan', '-7.6503387589809115, 112.90129160690881', NULL, NULL),
+(8, 'Kejari Bojonegoro', '-7.16218106116237, 111.87026972224497', NULL, NULL),
+(9, 'Kejari Bondowoso', '-7.924478096382919, 113.81618711246558', NULL, NULL),
+(10, 'Kejari Pamekasan', '-7.193430005053785, 113.47400226827537', NULL, NULL),
+(11, 'Kejari Sidoarjo', '-7.447438579316729, 112.71616469526415', NULL, NULL),
+(12, 'Kejari Kabupaten Mojokerto', '-7.500585877797955, 112.42254489896659', NULL, NULL),
+(13, 'Kejari Kota Probolinggo', '-7.769746124861745, 113.21371964129908', NULL, NULL),
+(14, 'Kejari Banyuwangi', '-8.216443642917378, 114.36323533760432', NULL, NULL),
+(15, 'Kejari Blitar', '-8.092918747950362, 112.18005363945326', NULL, NULL),
+(16, 'Kejari Jombang', '-7.55539095712239, 112.23515669711654', NULL, NULL),
+(17, 'Kejari Ponorogo', '-7.851111342072586, 111.45930125479285', NULL, NULL),
+(18, 'Kejari Gresik', '-7.169598373692593, 112.60272392224502', NULL, NULL),
+(19, 'Kejari Lumajang', '-8.122084173661364, 113.21696975294628', NULL, NULL),
+(20, 'Kejari Tulung Agung', '-8.028438247395696, 111.91883641616889', NULL, NULL),
+(21, 'Kejari Trenggalek', '-8.055303324360013, 111.71022064130338', NULL, NULL),
+(22, 'Kejari Nganjuk', '-7.611179046363342, 111.90208295663983', NULL, NULL),
+(23, 'Kejari Magetan', '-7.664991767012335, 111.31689985108822', NULL, NULL),
+(24, 'Kejari Tuban', '-6.8960964663472515, 112.06553982594285', NULL, NULL),
+(25, 'Kejari Ngawi', '-7.405186169529679, 111.44453962224851', NULL, NULL),
+(26, 'Kejari Sumenep', '-7.013912533768696, 113.87526846846261', NULL, NULL),
+(27, 'Kejari Lamongan', '-7.114236330535134, 112.42281019176096', NULL, NULL),
+(28, 'Kejari Sampang', '-7.184832076857094, 113.23725704147512', NULL, NULL),
+(29, 'Kejari Bangkalan', '-7.047789698769383, 112.73436212244152', NULL, NULL),
+(30, 'Kejari Pacitan', '-8.21099523366805, 111.08394955498012', NULL, NULL),
+(31, 'Kejari Situbondo', '-7.700371350635005, 114.02143415497477', NULL, NULL),
+(32, 'Kejari Kabupaten Pasuruan', '-7.602052654998529, 112.82795566155573', NULL, NULL),
+(33, 'Kejari Kabupaten Probolinggo', '-7.760824944902189, 113.41043972614018', NULL, NULL),
+(34, 'Kejari Tanjung Perak', '-7.243072482648427, 112.73443531079452', NULL, NULL),
+(35, 'Kejari Kabupaten Malang', '-8.142584761126432, 112.56311268012271', NULL, NULL),
+(36, 'Kejari Batu', '-7.861471680198001, 112.52585632244944', NULL, NULL),
+(37, 'Kejari Kabupaten Kediri', '-7.790480276801373, 112.05659376847025', NULL, NULL),
+(38, 'Kejari Kota Mojokerto', '-7.484033530971962, 112.45026778196187', NULL, NULL),
+(39, 'Kejari Kabupaten Madiun', '-7.545683226866922, 111.60291157346984', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Administrator', 'admin@admin', NULL, '$2y$10$uvtXXwzK8qwC6pPWc5JsXekPawP7kQlC94mQDf3JusjrDvLtAXN1O', 'SFlEJGvPSShB9572yvvdGP7sj1ASAX9HxQ7iLQqq5G025zpWqP1EozLeEPZN', NULL, NULL);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `jabatans`
+--
+ALTER TABLE `jabatans`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `jumlahs`
+--
+ALTER TABLE `jumlahs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `jumlahs_satker_id_foreign` (`satker_id`),
+  ADD KEY `jumlahs_jabatan_id_foreign` (`jabatan_id`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `password_reset_tokens`
+--
+ALTER TABLE `password_reset_tokens`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- Indexes for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indexes for table `satkers`
+--
+ALTER TABLE `satkers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `jabatans`
+--
+ALTER TABLE `jabatans`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+
+--
+-- AUTO_INCREMENT for table `jumlahs`
+--
+ALTER TABLE `jumlahs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=583;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `satkers`
+--
+ALTER TABLE `satkers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `jumlahs`
+--
+ALTER TABLE `jumlahs`
+  ADD CONSTRAINT `jumlahs_jabatan_id_foreign` FOREIGN KEY (`jabatan_id`) REFERENCES `jabatans` (`id`),
+  ADD CONSTRAINT `jumlahs_satker_id_foreign` FOREIGN KEY (`satker_id`) REFERENCES `satkers` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

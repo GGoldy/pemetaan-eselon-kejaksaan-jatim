@@ -16,6 +16,6 @@ export default defineConfig({
   // run this in terminal 'php artisan serve --host your-local-ip-address'
   // and this 'npm run dev --host'
   // server: {
-  //   host: "192.168.18.168",
+  //   host: "your-local-ipaddress",
   // },
 });
