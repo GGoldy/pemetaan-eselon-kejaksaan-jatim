@@ -1,4 +1,3 @@
-<img width="920" alt="SS Halaman Pengunjung" src="https://github.com/GGoldy/pemetaan-eselon-kejaksaan-jatim/assets/42240127/e5a709ba-9303-4a5e-9756-6be22b9a0966">
 # Pemetaan Pegawai pada Kejaksaan Tinggi Jawa Timur (E-Map Kejati Jatim)
 
 Merupakan perangkat lunak berbasis web yang berbasis teknologi laravel. Fokus pengembangan aplikasi terletak pada pemetaan pegawai pada tiap - tiap satuan kerja dalam wilayah kerja Kejaksaan Tinggi Jawa Timur.
@@ -7,10 +6,10 @@ Merupakan perangkat lunak berbasis web yang berbasis teknologi laravel. Fokus pe
 
 ## Screenshots
 
-<img width="920" alt="SS Halaman Pengunjung" src="https://github.com/GGoldy/pemetaan-eselon-kejaksaan-jatim/assets/42240127/6b37c49b-c18b-4c9a-9eba-27da42aca473">
-<img width="905" alt="SS Halaman Login" src="https://github.com/GGoldy/pemetaan-eselon-kejaksaan-jatim/assets/42240127/8e0d132e-6e7d-4507-ab89-b2eae42074b3">
-<img width="905" alt="SS Dashboard Admin 1" src="https://github.com/GGoldy/pemetaan-eselon-kejaksaan-jatim/assets/42240127/9aadc600-6bc2-4842-b85f-19ee45b5f2fd">
-<img width="907" alt="SS Dashboard Admin 2" src="https://github.com/GGoldy/pemetaan-eselon-kejaksaan-jatim/assets/42240127/1c53e979-b72a-4d4a-8676-8c51b26971f8">
+<img width="450" alt="SS Halaman Pengunjung" src="https://github.com/GGoldy/pemetaan-eselon-kejaksaan-jatim/assets/42240127/6b37c49b-c18b-4c9a-9eba-27da42aca473">
+<img width="450" alt="SS Halaman Login" src="https://github.com/GGoldy/pemetaan-eselon-kejaksaan-jatim/assets/42240127/8e0d132e-6e7d-4507-ab89-b2eae42074b3">
+<img width="450" alt="SS Dashboard Admin 1" src="https://github.com/GGoldy/pemetaan-eselon-kejaksaan-jatim/assets/42240127/9aadc600-6bc2-4842-b85f-19ee45b5f2fd">
+<img width="450" alt="SS Dashboard Admin 2" src="https://github.com/GGoldy/pemetaan-eselon-kejaksaan-jatim/assets/42240127/1c53e979-b72a-4d4a-8676-8c51b26971f8">
 
 ## Tech Stack
 
