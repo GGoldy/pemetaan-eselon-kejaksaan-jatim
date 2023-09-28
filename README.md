@@ -6,7 +6,7 @@ Merupakan perangkat lunak berbasis web yang berbasis teknologi laravel. Fokus pe
 
 ## Screenshots
 <p>
-<img align="left" width="350" alt="SS Halaman Pengunjung" src="https://github.com/GGoldy/pemetaan-eselon-kejaksaan-jatim/assets/42240127/6b37c49b-c18b-4c9a-9eba-27da42aca473">
+<img width="350" alt="SS Halaman Pengunjung" src="https://github.com/GGoldy/pemetaan-eselon-kejaksaan-jatim/assets/42240127/6b37c49b-c18b-4c9a-9eba-27da42aca473">
 <p>
 <img width="350" alt="SS Halaman Login" src="https://github.com/GGoldy/pemetaan-eselon-kejaksaan-jatim/assets/42240127/8e0d132e-6e7d-4507-ab89-b2eae42074b3" >
 <p>
