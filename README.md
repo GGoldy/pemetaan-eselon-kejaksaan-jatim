@@ -6,10 +6,10 @@ Merupakan perangkat lunak berbasis web yang berbasis teknologi laravel. Fokus pe
 
 ## Screenshots
 
-<img align="left" width="450" alt="SS Halaman Pengunjung" src="https://github.com/GGoldy/pemetaan-eselon-kejaksaan-jatim/assets/42240127/6b37c49b-c18b-4c9a-9eba-27da42aca473">
-<img align="right" width="450" alt="SS Halaman Login" src="https://github.com/GGoldy/pemetaan-eselon-kejaksaan-jatim/assets/42240127/8e0d132e-6e7d-4507-ab89-b2eae42074b3">
-<img align="left" width="450" alt="SS Dashboard Admin 1" src="https://github.com/GGoldy/pemetaan-eselon-kejaksaan-jatim/assets/42240127/9aadc600-6bc2-4842-b85f-19ee45b5f2fd">
-<img align="right" width="450" alt="SS Dashboard Admin 2" src="https://github.com/GGoldy/pemetaan-eselon-kejaksaan-jatim/assets/42240127/1c53e979-b72a-4d4a-8676-8c51b26971f8">
+<img align="left" width="300" alt="SS Halaman Pengunjung" src="https://github.com/GGoldy/pemetaan-eselon-kejaksaan-jatim/assets/42240127/6b37c49b-c18b-4c9a-9eba-27da42aca473">
+<img align="right" width="300" alt="SS Halaman Login" src="https://github.com/GGoldy/pemetaan-eselon-kejaksaan-jatim/assets/42240127/8e0d132e-6e7d-4507-ab89-b2eae42074b3">
+<img align="left" width="300" alt="SS Dashboard Admin 1" src="https://github.com/GGoldy/pemetaan-eselon-kejaksaan-jatim/assets/42240127/9aadc600-6bc2-4842-b85f-19ee45b5f2fd">
+<img align="right" width="300" alt="SS Dashboard Admin 2" src="https://github.com/GGoldy/pemetaan-eselon-kejaksaan-jatim/assets/42240127/1c53e979-b72a-4d4a-8676-8c51b26971f8">
 
 ## Tech Stack
 
