@@ -11,9 +11,7 @@ Merupakan perangkat lunak berbasis web yang berbasis teknologi laravel. Fokus pe
 <img width="350" alt="SS Halaman Login" src="https://github.com/GGoldy/pemetaan-eselon-kejaksaan-jatim/assets/42240127/8e0d132e-6e7d-4507-ab89-b2eae42074b3" >
 <p>
 <img width="350" alt="SS Dashboard Admin 1" src="https://github.com/GGoldy/pemetaan-eselon-kejaksaan-jatim/assets/42240127/9aadc600-6bc2-4842-b85f-19ee45b5f2fd">
-<p>
 <img width="350" alt="SS Dashboard Admin 2" src="https://github.com/GGoldy/pemetaan-eselon-kejaksaan-jatim/assets/42240127/1c53e979-b72a-4d4a-8676-8c51b26971f8">
-<p>
 </p>
 <br clear="both"/>
 
